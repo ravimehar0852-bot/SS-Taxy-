@@ -1118,3 +1118,340 @@ function showToast(msg, type = 'success') {
   t.className = 'show ' + type;
   setTimeout(() => t.className = '', 3000);
 }
+function renderAbout() {
+  const container = document.getElementById('page-about');
+  if (!container) return;
+
+  const company = CONFIG.company || {};
+  const testimonials = CONFIG.testimonials || [];
+
+  container.innerHTML = `
+    <section class="about-hero section-padding">
+      <div class="container">
+        <h1 class="section-title">About ${company.name || 'Us'}</h1>
+        <p class="section-subtitle">${company.tagline || ''}</p>
+        <p class="about-description">${company.about || company.description || ''}</p>
+      </div>
+    </section>
+
+    <section class="about-stats section-padding">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <h3 class="stat-number">${company.yearsExperience || company.experience || '0'}+</h3>
+          <p class="stat-label">Years of Experience</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-number">${(CONFIG.fleet || []).length}</h3>
+          <p class="stat-label">Fleet Vehicles</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-number">${(CONFIG.routes || []).length}</h3>
+          <p class="stat-label">Routes Covered</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-number">${testimonials.length}+</h3>
+          <p class="stat-label">Happy Customers</p>
+        </div>
+      </div>
+    </section>
+
+    ${testimonials.length ? `
+    <section class="testimonials-section section-padding">
+      <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonials-grid">
+          ${testimonials.map(t => `
+            <div class="testimonial-card">
+              <div class="testimonial-rating">${'★'.repeat(t.rating || 5)}</div>
+              <p class="testimonial-text">"${t.text || t.message || ''}"</p>
+              <h4 class="testimonial-name">${t.name || 'Customer'}</h4>
+              <span class="testimonial-location">${t.location || ''}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
+
+    ${(CONFIG.faqs || []).length ? `
+    <section class="faq-section section-padding">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          ${CONFIG.faqs.map((faq, i) => `
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(${i})">
+                ${faq.question || faq.q || ''}
+                <span class="faq-icon" id="faq-icon-${i}">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-${i}" style="display:none;">
+                <p>${faq.answer || faq.a || ''}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
+  `;
+}
+
+function toggleFAQ(index) {
+  const answer = document.getElementById(`faq-answer-${index}`);
+  const icon = document.getElementById(`faq-icon-${index}`);
+  if (!answer) return;
+  const isOpen = answer.style.display === 'block';
+  answer.style.display = isOpen ? 'none' : 'block';
+  if (icon) icon.textContent = isOpen ? '+' : '−';
+}
+
+function renderServices() {
+  const container = document.getElementById('page-services');
+  if (!container) return;
+
+  const company = CONFIG.company || {};
+  const services = CONFIG.services || [];
+  const fleet = CONFIG.fleet || [];
+
+  container.innerHTML = `
+    <section class="services-hero section-padding">
+      <div class="container">
+        <h1 class="section-title">Our Services</h1>
+        <p class="section-subtitle">Reliable transport solutions tailored for you</p>
+      </div>
+    </section>
+
+    <section class="services-grid-section section-padding">
+      <div class="container">
+        <div class="services-grid">
+          ${services.map(service => `
+            <div class="service-card">
+              ${service.icon ? `<div class="service-icon"><i class="${service.icon}"></i></div>` : ''}
+              <h3 class="service-title">${service.title || service.name || ''}</h3>
+              <p class="service-description">${service.description || ''}</p>
+              ${service.price ? `<p class="service-price">${service.price}</p>` : ''}
+              ${service.features ? `
+                <ul class="service-features">
+                  ${service.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('')}
+                </ul>
+              ` : ''}
+              <button class="btn btn-outline" onclick="openWhatsAppEnquiry('${(service.title || service.name || '').replace(/'/g, "\\'")}')">
+                Enquire Now
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    ${fleet.length ? `
+    <section class="fleet-section section-padding">
+      <div class="container">
+        <h2 class="section-title">Our Fleet</h2>
+        <div class="fleet-grid">
+          ${fleet.map(vehicle => `
+            <div class="fleet-card">
+              ${vehicle.image ? `<img src="${vehicle.image}" alt="${vehicle.name || 'Vehicle'}" class="fleet-image">` : ''}
+              <h3 class="fleet-name">${vehicle.name || vehicle.model || ''}</h3>
+              <p class="fleet-capacity">${vehicle.capacity ? `Seating: ${vehicle.capacity}` : ''}</p>
+              <p class="fleet-description">${vehicle.description || ''}</p>
+              ${vehicle.amenities ? `
+                <div class="fleet-amenities">
+                  ${vehicle.amenities.map(a => `<span class="amenity-tag">${a}</span>`).join('')}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
+
+    <section class="services-cta section-padding">
+      <div class="container">
+        <h2>Need a Custom Quote?</h2>
+        <p>Contact us on WhatsApp for instant assistance</p>
+        <button class="btn btn-primary" onclick="openWhatsAppEnquiry('General Enquiry')">
+          <i class="fab fa-whatsapp"></i> Chat With Us
+        </button>
+      </div>
+    </section>
+  `;
+}
+
+function openWhatsAppEnquiry(serviceName) {
+  const company = CONFIG.company || {};
+  const phone = (company.whatsapp || company.phone || '').replace(/[^0-9]/g, '');
+  const message = encodeURIComponent(`Hi, I'm interested in your ${serviceName} service. Please share more details.`);
+  if (phone) {
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+  }
+}
+
+function renderRoutes() {
+  const container = document.getElementById('page-routes');
+  if (!container) return;
+
+  const routes = CONFIG.routes || [];
+  const company = CONFIG.company || {};
+
+  container.innerHTML = `
+    <section class="routes-hero section-padding">
+      <div class="container">
+        <h1 class="section-title">Our Routes</h1>
+        <p class="section-subtitle">Connecting you to your destination, safely and on time</p>
+      </div>
+    </section>
+
+    <section class="routes-filter-section section-padding">
+      <div class="container">
+        <div class="routes-search">
+          <input type="text" id="routeSearchInput" placeholder="Search by city or route..." oninput="filterRoutes()">
+        </div>
+        <div class="routes-grid" id="routesGrid">
+          ${routes.map((route, i) => `
+            <div class="route-card" data-route-name="${(route.from || '') + ' ' + (route.to || '') + ' ' + (route.name || '')}">
+              <div class="route-header">
+                <span class="route-from">${route.from || ''}</span>
+                <i class="fas fa-arrow-right route-arrow"></i>
+                <span class="route-to">${route.to || ''}</span>
+              </div>
+              ${route.distance ? `<p class="route-distance"><i class="fas fa-road"></i> ${route.distance}</p>` : ''}
+              ${route.duration ? `<p class="route-duration"><i class="fas fa-clock"></i> ${route.duration}</p>` : ''}
+              ${route.price ? `<p class="route-price">${route.price}</p>` : ''}
+              ${route.frequency ? `<p class="route-frequency">${route.frequency}</p>` : ''}
+              <button class="btn btn-outline" onclick="openWhatsAppEnquiry('${(route.from || '')} to ${(route.to || '')} route'.replace(/'/g, '')">
+                Book This Route
+              </button>
+            </div>
+          `).join('')}
+        </div>
+        <p id="noRoutesMessage" style="display:none; text-align:center; margin-top:20px;">
+          No routes found matching your search.
+        </p>
+      </div>
+    </section>
+  `;
+}
+
+function filterRoutes() {
+  const input = document.getElementById('routeSearchInput');
+  const query = (input.value || '').toLowerCase();
+  const cards = document.querySelectorAll('#routesGrid .route-card');
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const routeName = (card.getAttribute('data-route-name') || '').toLowerCase();
+    if (routeName.includes(query)) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const noResults = document.getElementById('noRoutesMessage');
+  if (noResults) {
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+}
+
+function renderContact() {
+  const container = document.getElementById('page-contact');
+  if (!container) return;
+
+  const company = CONFIG.company || {};
+  const phone = company.phone || '';
+  const whatsapp = company.whatsapp || company.phone || '';
+  const email = company.email || '';
+  const address = company.address || '';
+
+  container.innerHTML = `
+    <section class="contact-hero section-padding">
+      <div class="container">
+        <h1 class="section-title">Contact Us</h1>
+        <p class="section-subtitle">We're here to help with your travel needs</p>
+      </div>
+    </section>
+
+    <section class="contact-section section-padding">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          ${phone ? `
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <a href="tel:${phone}">${phone}</a>
+            </div>
+          ` : ''}
+          ${email ? `
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:${email}">${email}</a>
+            </div>
+          ` : ''}
+          ${address ? `
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>${address}</span>
+            </div>
+          ` : ''}
+          ${whatsapp ? `
+            <button class="btn btn-primary whatsapp-btn" onclick="openWhatsAppEnquiry('General Enquiry')">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </button>
+          ` : ''}
+          ${company.mapEmbedUrl ? `
+            <div class="contact-map">
+              <iframe src="${company.mapEmbedUrl}" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
+            </div>
+          ` : ''}
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h2>Send Us a Message</h2>
+          <div class="contact-form">
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Phone</label>
+              <input type="tel" id="contactPhone" placeholder="Your Phone Number">
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="4" placeholder="How can we help you?"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitContactForm()">
+              Send Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function submitContactForm() {
+  const name = document.getElementById('contactName').value.trim();
+  const phone = document.getElementById('contactPhone').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
+  const company = CONFIG.company || {};
+  const whatsapp = (company.whatsapp || company.phone || '').replace(/[^0-9]/g, '');
+
+  if (!name || !phone) {
+    alert('Please fill in your name and phone number.');
+    return;
+  }
+
+  const text = encodeURIComponent(
+    `Hi, my name is ${name}.\nPhone: ${phone}\nMessage: ${message || 'I would like to know more about your services.'}`
+  );
+
+  if (whatsapp) {
+    window.open(`https://wa.me/${whatsapp}?text=${text}`, '_blank');
+  } else {
+    alert('Thank you! We will get back to you shortly.');
+  }
+    }
