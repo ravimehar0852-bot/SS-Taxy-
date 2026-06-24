@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — SS Taxi</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+  <!-- ── Login Screen ───────────────────────────────────── -->
+  <section id="admin-login">
+    <div class="login-card">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div class="logo-mark" style="margin:0 auto 0.75rem;">SS</div>
+        <h2>Admin Login</h2>
+        <p style="font-size:0.88rem;margin-top:0.5rem;">SS Taxi Dashboard</p>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Email Address</label>
+        <input type="email" id="admin-email" placeholder="admin@sstaxiservice.com" autocomplete="username">
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label>Password</label>
+        <input type="password" id="admin-pass" placeholder="••••••••" autocomplete="current-password"
+               onkeydown="if(event.key==='Enter')adminLogin()">
+      </div>
+      <button class="btn btn-gold" id="login-btn" style="width:100%;justify-content:center;" onclick="adminLogin()">
+        Login to Dashboard
+      </button>
+      <p style="text-align:center;margin-top:1.25rem;font-size:0.82rem;">
+        <a href="../index.html">← Back to Website</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Dashboard ──────────────────────────────────────── -->
+  <div id="admin-dashboard" class="hidden">
+
+    <!-- Navbar -->
+    <nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">
+          <div class="logo-mark">SS</div>
+          <span class="logo-text">SS <span>Taxi</span> <span style="font-size:0.7rem;color:var(--white-muted);font-family:var(--font-body);"> Admin</span></span>
+        </a>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:0.82rem;color:var(--white-muted);" id="admin-user-email"></span>
+          <button class="btn btn-outline" style="font-size:0.82rem;padding:0.4rem 0.9rem;" onclick="adminLogout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div style="padding:80px 0 0;">
+      <div class="container" style="padding-top:2rem;">
+
+        <!-- Stats -->
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-card-num" id="stat-total">0</div>
+            <div class="stat-card-label">Total Bookings</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-num" id="stat-confirmed" style="color:var(--green);">0</div>
+            <div class="stat-card-label">Confirmed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-num" id="stat-pending">0</div>
+            <div class="stat-card-label">Pending</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-num" id="stat-cancelled" style="color:var(--red);">0</div>
+            <div class="stat-card-label">Cancelled</div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="admin-nav">
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="bookings" onclick="showAdminTab('bookings')">📋 Bookings</button>
+            <button class="admin-tab" data-tab="analytics" onclick="showAdminTab('analytics')">📊 Analytics</button>
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:center;">
+            <button class="export-btn" onclick="exportBookings()">⬇ Export CSV</button>
+          </div>
+        </div>
+
+        <!-- Bookings Section -->
+        <div class="admin-section active" id="admin-bookings">
+          <div class="table-wrap">
+            <div class="table-header">
+              <h3 style="font-size:1rem;">All Bookings</h3>
+              <input class="search-input" id="booking-search" placeholder="Search name, phone, route…" oninput="searchBookings()">
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Route</th>
+                  <th>Date & Time</th>
+                  <th>Vehicle</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookings-tbody">
+                <tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--white-muted);">Loading bookings…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Analytics Section -->
+        <div class="admin-section" id="admin-analytics">
+          <div class="analytics-grid">
+            <div class="chart-container">
+              <h4 style="font-size:0.95rem;margin-bottom:0.25rem;">Vehicle Popularity</h4>
+              <p style="font-size:0.82rem;margin-bottom:0;">Bookings by vehicle type</p>
+              <div class="bar-chart" id="vehicle-chart"></div>
+            </div>
+            <div class="chart-container">
+              <h4 style="font-size:0.95rem;margin-bottom:1rem;">Journey Type Breakdown</h4>
+              <div id="type-breakdown"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="admin-toast" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--black-card);border:1px solid var(--black-border);border-radius:var(--radius);padding:0.85rem 1.5rem;font-size:0.9rem;font-weight:500;box-shadow:var(--shadow-card);z-index:9999;opacity:0;pointer-events:none;transition:opacity 0.25s ease;white-space:nowrap;" role="status" aria-live="polite"></div>
+
+  <!-- Firebase SDK (compat version — swap for modular if using build tool) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
