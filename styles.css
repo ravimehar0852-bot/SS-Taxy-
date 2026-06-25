@@ -9,16 +9,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black:       #0a0a0a;
-  --black-soft:  #111111;
-  --black-card:  #161616;
-  --black-border:#222222;
-  --gold:        #C9A84C;
-  --gold-light:  #E2C97E;
-  --gold-dark:   #A07730;
-  --white:       #FFFFFF;
-  --white-soft:  #F5F5F0;
-  --white-muted: #AAAAAA;
+  --black: #ffffff;
+--black-soft: #f8f8f8;
+--black-card: #ffffff;
+--black-border: #e5e5e5;
+
+--white: #111111;
+--white-muted: #666666;
   --red:         #E53E3E;
   --green:       #38A169;
 
@@ -36,11 +33,12 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--black);
-  color: var(--white);
+  background: #ffffff;
+  color: #111111;
   line-height: 1.6;
   overflow-x: hidden;
 }
+
 
 /* ── Typography ─────────────────────────────────────────── */
 h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
