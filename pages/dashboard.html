@@ -68,13 +68,9 @@
 <script src="../admin.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-
+window.onload = function() {
   allBookings = getSampleBookings();
-
   renderStats();
-
   renderBookingsTable(allBookings);
-
-});
+};
 </script>
