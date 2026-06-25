@@ -113,7 +113,8 @@ async function loadBookings() {
         }));
 
         renderStats();
-        renderBookingsTable(); // ya jo function table render karta hai
+        renderBookingsTable(allBookings);
+        renderAnalytics();
 
       }, (error) => {
         console.error(error);
@@ -122,6 +123,8 @@ async function loadBookings() {
     return;
   }
 
+  allBookings = [];
+}
 
 function getSampleBookings() {
   return [
