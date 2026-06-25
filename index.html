@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SS TAXY — Premium Taxi & Cab Booking Service | Delhi NCR</title>
+
+<!-- SEO Meta -->
+<meta name="description" content="Book premium taxi & cabs with SS TAXY. One-way, round-trip, outstation, airport transfers across Delhi, Jaipur, Agra, Manali. 24x7 service, verified drivers, lowest fares." />
+<meta name="keywords" content="taxi booking, cab service, Delhi to Jaipur taxi, airport taxi, outstation cab, SS Taxy" />
+<meta name="author" content="SS TAXY" />
+<link rel="canonical" href="https://sstaxy.com/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SS TAXY — Premium Taxi Booking" />
+<meta property="og:description" content="Luxury cab booking with verified drivers, GPS tracking, lowest fares guaranteed." />
+<meta property="og:image" content="https://sstaxy.com/og-image.jpg" />
+<meta property="og:url" content="https://sstaxy.com" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Schema: Local Business -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"TaxiService",
+  "name":"SS TAXY",
+  "image":"https://sstaxy.com/og-image.jpg",
+  "url":"https://sstaxy.com",
+  "telephone":"+919876543210",
+  "address":{"@type":"PostalAddress","streetAddress":"Connaught Place","addressLocality":"New Delhi","postalCode":"110001","addressCountry":"IN"},
+  "priceRange":"₹₹",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"2480"}
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader"><div class="loader-spinner"></div><p>SS TAXY</p></div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container nav">
+    <a href="#" class="logo"><span>SS</span> TAXY</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#vehicles">Vehicles</a>
+      <a href="#routes">Routes</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+      <a href="admin.html" class="btn-outline-gold">Admin</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="hero-tag">PREMIUM • LUXURY • RELIABLE</p>
+    <h1>Travel In <span class="gold">Style.</span><br/>Arrive With <span class="gold">Grace.</span></h1>
+    <p class="hero-sub">India's most trusted premium taxi service — One-Way, Round Trip, Outstation & Airport Transfers across 100+ cities.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-gold"><i class="fas fa-taxi"></i> Book Cab Now</a>
+      <a href="tel:+919876543210" class="btn-outline-gold"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking-section" id="booking">
+  <div class="container">
+    <div class="booking-card">
+      <div class="tabs">
+        <button class="tab active" data-tab="oneway"><i class="fas fa-arrow-right"></i> One Way</button>
+        <button class="tab" data-tab="round"><i class="fas fa-exchange-alt"></i> Round Trip</button>
+        <button class="tab" data-tab="multi"><i class="fas fa-route"></i> Multi City</button>
+        <button class="tab" data-tab="local"><i class="fas fa-city"></i> Local</button>
+        <button class="tab" data-tab="airport"><i class="fas fa-plane"></i> Airport</button>
+      </div>
+
+      <form id="bookingForm" class="booking-form">
+        <div class="grid">
+          <div class="field"><label>Pickup Location</label><input type="text" id="pickup" placeholder="e.g. Connaught Place" required /></div>
+          <div class="field"><label>Drop Location</label><input type="text" id="drop" placeholder="e.g. Jaipur" required /></div>
+          <div class="field"><label>Pickup Date</label><input type="date" id="date" required /></div>
+          <div class="field"><label>Pickup Time</label><input type="time" id="time" required /></div>
+          <div class="field"><label>Passenger Name</label><input type="text" id="name" placeholder="Full Name" required /></div>
+          <div class="field"><label>Mobile Number</label><input type="tel" id="phone" placeholder="10-digit mobile" pattern="[0-9]{10}" required /></div>
+          <div class="field"><label>Email</label><input type="email" id="email" placeholder="you@email.com" required /></div>
+          <div class="field"><label>Vehicle Type</label>
+            <select id="vehicle" required>
+              <option value="sedan">Sedan (4 seats)</option>
+              <option value="suv">SUV (6 seats)</option>
+              <option value="ertiga">Ertiga (6 seats)</option>
+              <option value="innova">Innova (7 seats)</option>
+              <option value="innovaCrysta">Innova Crysta (7 seats)</option>
+              <option value="tempo">Tempo Traveller (12 seats)</option>
+            </select>
+          </div>
+          <div class="field"><label>Approx Distance (KM)</label><input type="number" id="distance" placeholder="e.g. 280" required min="1" /></div>
+        </div>
+
+        <div class="fare-box">
+          <div><span>Estimated Fare</span><h3 id="fareEstimate">₹ 0</h3></div>
+          <button type="submit" class="btn-gold"><i class="fas fa-search"></i> Search & Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- VEHICLES -->
+<section class="section" id="vehicles">
+  <div class="container">
+    <h2 class="section-title">Our <span class="gold">Fleet</span></h2>
+    <p class="section-sub">Choose from our luxury fleet of meticulously maintained vehicles</p>
+    <div class="vehicle-grid" id="vehicleGrid"></div>
+  </div>
+</section>
+
+<!-- ROUTES -->
+<section class="section dark" id="routes">
+  <div class="container">
+    <h2 class="section-title">Popular <span class="gold">Routes</span></h2>
+    <p class="section-sub">Pre-priced outstation packages</p>
+    <div class="route-grid" id="routeGrid"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <h2 class="section-title">Our <span class="gold">Services</span></h2>
+    <div class="services-grid">
+      <div class="service-card"><i class="fas fa-arrow-right"></i><h3>One Way Taxi</h3><p>Pay only one side, no return charges.</p></div>
+      <div class="service-card"><i class="fas fa-exchange-alt"></i><h3>Round Trip</h3><p>Same cab, both ways, best for tours.</p></div>
+      <div class="service-card"><i class="fas fa-mountain"></i><h3>Outstation</h3><p>Inter-city travel across India.</p></div>
+      <div class="service-card"><i class="fas fa-plane"></i><h3>Airport Taxi</h3><p>On-time pickups & drops, 24×7.</p></div>
+      <div class="service-card"><i class="fas fa-briefcase"></i><h3>Corporate Taxi</h3><p>Monthly billing & dedicated managers.</p></div>
+      <div class="service-card"><i class="fas fa-bus"></i><h3>Tempo Traveller</h3><p>Group travel for 12+ passengers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section dark" id="why">
+  <div class="container">
+    <h2 class="section-title">Why Choose <span class="gold">SS TAXY</span></h2>
+    <div class="why-grid">
+      <div class="why-card"><i class="fas fa-headset"></i><h4>24×7 Support</h4></div>
+      <div class="why-card"><i class="fas fa-user-shield"></i><h4>Verified Drivers</h4></div>
+      <div class="why-card"><i class="fas fa-map-marked-alt"></i><h4>GPS Tracking</h4></div>
+      <div class="why-card"><i class="fas fa-shield-alt"></i><h4>Safe Travel</h4></div>
+      <div class="why-card"><i class="fas fa-bolt"></i><h4>Instant Booking</h4></div>
+      <div class="why-card"><i class="fas fa-rupee-sign"></i><h4>Lowest Fare</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">Customer <span class="gold">Reviews</span></h2>
+    <div class="reviews">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Driver was punctual, car was spotless. Best outstation experience I've had."</p>
+        <h5>— Rohit Sharma</h5>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Booked Innova Crysta for Manali trip. Smooth ride, professional driver. Highly recommend."</p>
+        <h5>— Priya Mehta</h5>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Airport pickup at 3 AM — driver was waiting. SS TAXY is reliable. 10/10."</p>
+        <h5>— Arjun Kapoor</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section dark" id="faq">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked <span class="gold">Questions</span></h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">How do I book a cab? <i class="fas fa-plus"></i></button><div class="faq-a">Use our booking form above, fill details, choose vehicle, pay advance or full — done!</div></div>
+      <div class="faq-item"><button class="faq-q">Is my payment secure? <i class="fas fa-plus"></i></button><div class="faq-a">Yes, we use Razorpay — PCI-DSS compliant, encrypted transactions.</div></div>
+      <div class="faq-item"><button class="faq-q">Can I cancel my booking? <i class="fas fa-plus"></i></button><div class="faq-a">Yes, free cancellation up to 4 hours before pickup time.</div></div>
+      <div class="faq-item"><button class="faq-q">Do you provide outstation cabs? <i class="fas fa-plus"></i></button><div class="faq-a">Absolutely. We serve 100+ outstation routes from Delhi NCR.</div></div>
+      <div class="faq-item"><button class="faq-q">Are drivers verified? <i class="fas fa-plus"></i></button><div class="faq-a">All drivers undergo background checks, license & ID verification.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In <span class="gold">Touch</span></h2>
+    <div class="contact-grid">
+      <a href="tel:+919876543210" class="contact-card"><i class="fas fa-phone"></i><h4>Call</h4><p>+91 98765 43210</p></a>
+      <a href="https://wa.me/919876543210" class="contact-card"><i class="fab fa-whatsapp"></i><h4>WhatsApp</h4><p>+91 98765 43210</p></a>
+      <a href="mailto:booking@sstaxy.com" class="contact-card"><i class="fas fa-envelope"></i><h4>Email</h4><p>booking@sstaxy.com</p></a>
+      <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h4>Address</h4><p>Connaught Place, New Delhi</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 <span class="gold">SS TAXY</span> · Premium Cab Service · All Rights Reserved</p>
+  </div>
+</footer>
+
+<!-- Floating Buttons -->
+<a href="https://wa.me/919876543210" class="float-btn whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+919876543210" class="float-btn call" title="Call"><i class="fas fa-phone"></i></a>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal hidden">
+  <div class="modal-card">
+    <i class="fas fa-check-circle gold-icon"></i>
+    <h2>Booking Confirmed!</h2>
+    <p>Booking ID: <strong id="bookingIdOut"></strong></p>
+    <p>You'll receive a WhatsApp confirmation shortly.</p>
+    <button class="btn-gold" onclick="closeModal()">Done</button>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+      </html>
