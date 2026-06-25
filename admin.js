@@ -100,25 +100,29 @@ async function loadDashboard(email) {
   renderAnalytics();
   showAdminTab('bookings');
 }
-
 async function loadBookings() {
+
   if (isFirebaseReady && db) {
-    try {
-      const snap = await db.collection('bookings').orderBy('createdAt', 'desc').limit(200).get();
-      allBookings = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      return;
-    } catch (e) {
-      console.warn('Firestore read error:', e);
-    }
+
+    db.collection('bookings')
+      .orderBy('createdAt', 'desc')
+      .onSnapshot((snap) => {
+
+        allBookings = snap.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+
+        renderStats();
+        renderBookingsTable(); // ya jo function table render karta hai
+
+      }, (error) => {
+        console.error(error);
+      });
+
+    return;
   }
-  // Fallback to localStorage
-  try {
-    allBookings = JSON.parse(localStorage.getItem('ss_bookings') || '[]');
-  } catch (e) {
-    allBookings = getSampleBookings();
-  }
-  if (!allBookings.length) allBookings = getSampleBookings();
-}
+
 
 function getSampleBookings() {
   return [
