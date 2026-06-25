@@ -9,7 +9,7 @@
 let isFirebaseReady = false;
 let db = null;
 let auth = null;
-let allBookings = [];
+let allbookings = [];
 
 // ── Init ───────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -70,8 +70,8 @@ async function adminLogin() {
     }
   } else {
     // Demo mode fallback
-    const demoEmail = window.CONFIG?.admin?.email || 'aiabhi02@gmail.com';
-    if (email === demoEmail && pass === 'aiabhi02') {
+    const demoEmail = window.CONFIG?.admin?.email || 'admin@sstaxiservice.com';
+    if (email === demoEmail && pass === 'admin123') {
       document.getElementById('admin-login').classList.add('hidden');
       document.getElementById('admin-dashboard').classList.remove('hidden');
       loadDashboard(email);
@@ -93,26 +93,26 @@ function adminLogout() {
 // ── Dashboard ──────────────────────────────────────────────
 async function loadDashboard(email) {
   document.getElementById('admin-user-email').textContent = email;
-  await loadBookings();
+  await loadbookings();
   renderStats();
-  renderBookingsTable(allBookings);
+  renderbookingsTable(allbookings);
   renderAnalytics();
   showAdminTab('bookings');
 }
-async function loadBookings() {
+async function loadbookings() {
 
   if (isFirebaseReady && db) {
 console.log("Firebase Connected");
     db.collection('bookings')
       .onSnapshot((snap) => {
 console.log("Documents:", snap.size);
-        allBookings = snap.docs.map(doc => ({
+        allbookings = snap.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
 
         renderStats();
-        renderBookingsTable(allBookings);
+        renderbookingsTable(allbookings);
         renderAnalytics();
 
       }, (error) => {
@@ -125,7 +125,7 @@ console.log("Documents:", snap.size);
   allBookings = [];
 }
 
-function getSampleBookings() {
+function getSamplebookings() {
   return [
     { id: '1001', name: 'Rohit Mishra',    phone: '+91 9876543210', type: 'One Way',          pickup: 'Lucknow',       drop: 'Agra',      date: '2024-07-15', time: '06:00', vehicle: 'Innova Crysta', status: 'confirmed', createdAt: new Date().toISOString() },
     { id: '1002', name: 'Priya Gupta',     phone: '+91 9876543211', type: 'Airport Transfer', pickup: 'Indira Nagar',  drop: 'LKO Airport',date: '2024-07-16', time: '03:30', vehicle: 'Sedan',         status: 'confirmed', createdAt: new Date().toISOString() },
@@ -137,10 +137,10 @@ function getSampleBookings() {
 
 // ── Stats ──────────────────────────────────────────────────
 function renderStats() {
-  const total     = allBookings.length;
-  const confirmed = allBookings.filter(b => b.status === 'confirmed').length;
-  const pending   = allBookings.filter(b => b.status === 'pending').length;
-  const cancelled = allBookings.filter(b => b.status === 'cancelled').length;
+  const total     = allbookings.length;
+  const confirmed = allbookings.filter(b => b.status === 'confirmed').length;
+  const pending   = allbookings.filter(b => b.status === 'pending').length;
+  const cancelled = allbookings.filter(b => b.status === 'cancelled').length;
 
   document.getElementById('stat-total').textContent     = total;
   document.getElementById('stat-confirmed').textContent  = confirmed;
@@ -149,7 +149,7 @@ function renderStats() {
 }
 
 // ── Table ──────────────────────────────────────────────────
-function renderBookingsTable(bookings) {
+function renderbookingsTable(bookings) {
   const tbody = document.getElementById('bookings-tbody');
   if (!bookings.length) {
     tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--white-muted);">No bookings found.</td></tr>`;
@@ -168,13 +168,13 @@ function renderBookingsTable(bookings) {
         <button class="action-btn action-confirm" onclick="updateStatus('${b.id}','confirmed')">✓</button>
         <button class="action-btn action-cancel"  onclick="updateStatus('${b.id}','cancelled')">✗</button>
         <button class="action-btn action-delete"  onclick="deleteBooking('${b.id}')">🗑</button>
-        <button class="action-btn" style="background:rgba(255,255,255,0.05);color:var(--white-muted);" onclick="viewBooking('${b.id}')">👁</button>
+        <button class="action-btn" style="background:rgba(255,255,255,0.05);color:var(--white-muted);" onclick="viewbooking('${b.id}')">👁</button>
       </td>
     </tr>
   `).join('');
 }
 
-function searchBookings() {
+function searchbookings() {
   const q = document.getElementById('booking-search').value.toLowerCase();
   const filtered = allBookings.filter(b =>
     (b.name||'').toLowerCase().includes(q) ||
@@ -183,12 +183,12 @@ function searchBookings() {
     (b.drop||'').toLowerCase().includes(q) ||
     (b.vehicle||'').toLowerCase().includes(q)
   );
-  renderBookingsTable(filtered);
+  renderbookingsTable(filtered);
 }
 
 async function updateStatus(id, status) {
   // Update locally
-  const booking = allBookings.find(b => String(b.id) === String(id));
+  const booking = allbookings.find(b => String(b.id) === String(id));
   if (booking) booking.status = status;
 
   // Update in Firestore
@@ -197,47 +197,47 @@ async function updateStatus(id, status) {
   } else {
     // Update localStorage
     try {
-      localStorage.setItem('ss_bookings', JSON.stringify(allBookings));
+      localStorage.setItem('ss_bookings', JSON.stringify(allbookings));
     } catch(e) {}
   }
 
-  renderBookingsTable(allBookings);
+  renderbookingsTable(allbookings);
   renderStats();
 
   // Send WhatsApp notification if confirmed
-  if (status === 'confirmed' && booking) {
+  if (status === 'confirmed' && bookings) {
     const wn  = CONFIG.company.whatsapp.replace(/\D/g,'');
-    const msg = `✅ *Booking Confirmed — SS Taxi*\n\n👤 ${booking.name}\n📞 ${booking.phone}\n📍 ${booking.pickup} → ${booking.drop}\n📅 ${booking.date} @ ${booking.time}\n🚗 ${booking.vehicle}\n\n_Your ride is confirmed! We'll contact you before pickup._`;
+    const msg = `✅ *bookings Confirmed — SS Taxi*\n\n👤 ${booking.name}\n📞 ${booking.phone}\n📍 ${booking.pickup} → ${booking.drop}\n📅 ${booking.date} @ ${booking.time}\n🚗 ${booking.vehicle}\n\n_Your ride is confirmed! We'll contact you before pickup._`;
     window.open(`https://wa.me/${booking.phone?.replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`, '_blank');
   }
-  showAdminToast(`Booking ${status}`, 'success');
+  showAdminToast(`bookings ${status}`, 'success');
 }
 
-async function deleteBooking(id) {
+async function deletebooking(id) {
   if (!confirm('Delete this booking? This cannot be undone.')) return;
 
-  allBookings = allBookings.filter(b => String(b.id) !== String(id));
+  allbookings = allbookings.filter(b => String(b.id) !== String(id));
 
   if (isFirebaseReady && db) {
     try { await db.collection('bookings').doc(String(id)).delete(); } catch(e) {}
   } else {
-    try { localStorage.setItem('ss_bookings', JSON.stringify(allBookings)); } catch(e) {}
+    try { localStorage.setItem('ss_bookings', JSON.stringify(allbookings)); } catch(e) {}
   }
 
-  renderBookingsTable(allBookings);
+  renderbookingsTable(allbookings);
   renderStats();
-  showAdminToast('Booking deleted', 'error');
+  showAdminToast('booking deleted', 'error');
 }
 
-function viewBooking(id) {
-  const b = allBookings.find(b => String(b.id) === String(id));
+function viewbooking(id) {
+  const b = allbookings.find(b => String(b.id) === String(id));
   if (!b) return;
   const modal = document.createElement('div');
   modal.className = 'booking-detail-modal';
   modal.innerHTML = `
     <div class="modal-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
-        <h3>Booking #${String(b.id).slice(-4)}</h3>
+        <h3>bookings #${String(b.id).slice(-4)}</h3>
         <button onclick="this.closest('.booking-detail-modal').remove()" style="background:none;border:none;color:var(--white-muted);font-size:1.5rem;cursor:pointer;">×</button>
       </div>
       ${Object.entries({
@@ -266,7 +266,7 @@ function viewBooking(id) {
 function renderAnalytics() {
   // Vehicle popularity
   const vehicleCounts = {};
-  allBookings.forEach(b => {
+  allbookings.forEach(b => {
     vehicleCounts[b.vehicle] = (vehicleCounts[b.vehicle] || 0) + 1;
   });
   const maxCount = Math.max(...Object.values(vehicleCounts), 1);
@@ -282,7 +282,7 @@ function renderAnalytics() {
 
   // Journey type breakdown
   const typeCounts = {};
-  allBookings.forEach(b => { typeCounts[b.type||'Other'] = (typeCounts[b.type||'Other'] || 0) + 1; });
+  allbookings.forEach(b => { typeCounts[b.type||'Other'] = (typeCounts[b.type||'Other'] || 0) + 1; });
   const typeEl = document.getElementById('type-breakdown');
   if (typeEl) {
     typeEl.innerHTML = Object.entries(typeCounts).map(([t, n]) => `
@@ -295,9 +295,9 @@ function renderAnalytics() {
 }
 
 // ── Export ─────────────────────────────────────────────────
-function exportBookings() {
+function exportbookings() {
   const headers = ['ID','Name','Phone','Type','Pickup','Drop','Date','Time','Vehicle','Status','Created At'];
-  const rows = allBookings.map(b => [
+  const rows = allbookings.map(b => [
     b.id, b.name, b.phone, b.type, b.pickup, b.drop, b.date, b.time, b.vehicle, b.status,
     b.createdAt ? new Date(b.createdAt).toLocaleString() : ''
   ]);
