@@ -1,0 +1,144 @@
+/* ============ SS TAXY — Premium Black + Gold ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a; --bg-2:#111; --gold:#d4af37; --gold-light:#f4d160;
+  --text:#f5f5f5; --muted:#aaa; --card:#1a1a1a; --radius:14px;
+  --shadow:0 10px 40px rgba(212,175,55,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.gold{color:var(--gold)}
+img{max-width:100%;display:block}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
+#loader p{color:var(--gold);margin-top:18px;font-family:'Playfair Display',serif;font-size:28px;letter-spacing:6px}
+.loader-spinner{width:50px;height:50px;border:4px solid #222;border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid #222}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px}
+.logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:2px}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:#ddd;text-decoration:none;font-weight:500;font-size:15px;transition:.3s}
+.nav-links a:hover{color:var(--gold)}
+.hamburger{display:none;background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer}
+
+/* BUTTONS */
+.btn-gold,.btn-outline-gold{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-weight:600;text-decoration:none;border:none;cursor:pointer;font-size:15px;transition:.3s;font-family:inherit}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(212,175,55,.4)}
+.btn-outline-gold{background:transparent;color:var(--gold);border:2px solid var(--gold)}
+.btn-outline-gold:hover{background:var(--gold);color:#000}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),url('https://images.unsplash.com/photo-1549924231-f129b911e442?w=1600') center/cover;padding-top:90px}
+.hero-content{position:relative;z-index:2;text-align:center;animation:fadeUp 1s ease}
+.hero-tag{color:var(--gold);letter-spacing:6px;font-weight:600;margin-bottom:14px;font-size:14px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:20px}
+.hero-sub{color:#ccc;max-width:680px;margin:0 auto 32px;font-size:17px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+/* BOOKING */
+.booking-section{padding:60px 0;background:var(--bg-2)}
+.booking-card{background:var(--card);border:1px solid #222;border-radius:20px;padding:32px;box-shadow:var(--shadow)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid #222;padding-bottom:18px;margin-bottom:24px}
+.tab{flex:1;min-width:120px;padding:12px 18px;background:transparent;color:#bbb;border:1px solid #333;border-radius:50px;cursor:pointer;font-family:inherit;font-size:14px;transition:.3s}
+.tab:hover{color:var(--gold)}
+.tab.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.field label{display:block;font-size:13px;margin-bottom:6px;color:#bbb;font-weight:500}
+.field input,.field select{width:100%;padding:13px 16px;background:#0d0d0d;border:1px solid #2a2a2a;color:#fff;border-radius:10px;font-family:inherit;font-size:14px;transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.15)}
+.fare-box{margin-top:24px;display:flex;justify-content:space-between;align-items:center;background:#0d0d0d;padding:20px 24px;border-radius:14px;border:1px dashed var(--gold);flex-wrap:wrap;gap:16px}
+.fare-box span{color:#aaa;font-size:13px}
+.fare-box h3{color:var(--gold);font-size:32px;font-family:'Playfair Display',serif}
+
+/* SECTIONS */
+.section{padding:80px 0}
+.section.dark{background:var(--bg-2)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);text-align:center;margin-bottom:10px}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:50px}
+
+/* VEHICLES */
+.vehicle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.vehicle-card{background:var(--card);border:1px solid #222;border-radius:var(--radius);overflow:hidden;transition:.4s}
+.vehicle-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:var(--shadow)}
+.vehicle-card img{height:200px;width:100%;object-fit:cover}
+.vehicle-info{padding:22px}
+.vehicle-info h3{color:var(--gold);margin-bottom:10px;font-family:'Playfair Display',serif}
+.vehicle-meta{display:flex;justify-content:space-between;color:#bbb;font-size:14px;margin-bottom:16px}
+
+/* ROUTES */
+.route-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.route-card{background:var(--card);padding:20px;border-radius:var(--radius);border-left:4px solid var(--gold);transition:.3s;cursor:pointer}
+.route-card:hover{transform:translateX(6px);background:#1f1f1f}
+.route-card h4{color:#fff;margin-bottom:6px}
+.route-card p{color:var(--gold);font-weight:600;font-size:14px}
+.route-card span{color:#777;font-size:13px}
+
+/* SERVICES */
+.services-grid,.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.service-card,.why-card{background:var(--card);padding:30px 24px;border-radius:var(--radius);text-align:center;border:1px solid #222;transition:.3s}
+.service-card:hover,.why-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.service-card i,.why-card i{font-size:36px;color:var(--gold);margin-bottom:14px}
+.service-card h3,.why-card h4{margin-bottom:8px;color:#fff}
+.service-card p{color:var(--muted);font-size:14px}
+
+/* TESTIMONIALS */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.review-card{background:var(--card);padding:26px;border-radius:var(--radius);border:1px solid #222}
+.stars{color:var(--gold);font-size:18px;margin-bottom:12px}
+.review-card p{color:#ccc;font-style:italic;margin-bottom:14px}
+.review-card h5{color:var(--gold)}
+
+/* FAQ */
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{background:var(--card);border:1px solid #222;border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-q{width:100%;background:none;color:#fff;border:none;padding:18px 22px;text-align:left;font-size:15px;font-family:inherit;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q i{color:var(--gold);transition:.3s}
+.faq-item.active .faq-q i{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;padding:0 22px;color:#bbb;transition:.4s ease}
+.faq-item.active .faq-a{max-height:200px;padding:0 22px 18px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.contact-card{background:var(--card);padding:30px 22px;border-radius:var(--radius);text-align:center;text-decoration:none;color:inherit;border:1px solid #222;transition:.3s}
+.contact-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.contact-card i{font-size:32px;color:var(--gold);margin-bottom:12px}
+.contact-card h4{margin-bottom:6px;color:#fff}
+.contact-card p{color:var(--muted);font-size:14px}
+
+/* FOOTER */
+.footer{background:#050505;padding:30px 0;text-align:center;color:#666;border-top:1px solid #222}
+
+/* FLOATING BUTTONS */
+.float-btn{position:fixed;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;text-decoration:none;z-index:90;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:.3s}
+.float-btn.whatsapp{bottom:24px;right:24px;background:#25d366}
+.float-btn.call{bottom:90px;right:24px;background:var(--gold);color:#000}
+.float-btn:hover{transform:scale(1.1)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
+.modal.hidden{display:none}
+.modal-card{background:var(--card);padding:40px;border-radius:20px;text-align:center;max-width:420px;width:100%;border:1px solid var(--gold);animation:popIn .4s}
+.gold-icon{font-size:60px;color:var(--gold);margin-bottom:14px}
+.modal-card h2{font-family:'Playfair Display',serif;color:#fff;margin-bottom:10px}
+.modal-card p{color:#ccc;margin-bottom:10px}
+@keyframes popIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* RESPONSIVE */
+@media (max-width: 800px){
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:#0a0a0a;flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid #222;transform:translateY(-200%);transition:.4s}
+  .nav-links.open{transform:translateY(0)}
+  .hamburger{display:block}
+  .hero{min-height:90vh}
+  .booking-card{padding:20px}
+  .tab{font-size:13px;padding:10px 14px;min-width:auto;flex:1 0 45%}
+  .fare-box{flex-direction:column;text-align:center}
+  .section{padding:60px 0}
+}
