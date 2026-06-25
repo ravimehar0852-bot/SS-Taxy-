@@ -23,14 +23,16 @@ const CONFIG = {
   },
 
   // ── Firebase Config ────────────────────────────────────────
-  firebase: {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  },
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD9Uhr4Rl4hu4kPO2EL1SBdMhpP1Plj6QM",
+  authDomain: "ss-taxy.firebaseapp.com",
+  projectId: "ss-taxy",
+  storageBucket: "ss-taxy.firebasestorage.app",
+  messagingSenderId: "335958609807",
+  appId: "1:335958609807:web:b675f1541a6f64dce7c5fa",
+  measurementId: "G-3S8RPP86W8"
+};
 
   // ── Admin Credentials (change before deploy) ───────────────
   admin: {
