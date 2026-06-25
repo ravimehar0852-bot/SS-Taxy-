@@ -20,17 +20,23 @@ img{max-width:100%;display:block}
 /* HEADER */
 .header{position:fixed;top:0;left:0;right:0;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid #222}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px}
+.logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+    display:block;
+}
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:8px;
     text-decoration:none;
 }
 .logo span{
     color:#FFD54F;
-    font-size:28px;
+    font-size:20px;
     font-weight:700;
-    letter-spacing:1px;
+    white-space:nowrap;
 }
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{color:#ddd;text-decoration:none;font-weight:500;font-size:15px;transition:.3s}
