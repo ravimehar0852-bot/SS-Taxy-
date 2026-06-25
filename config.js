@@ -89,3 +89,9 @@ firebase: {
 
 // Make globally available
 window.CONFIG = CONFIG;
+window.CONFIG = CONFIG;
+
+// Firebase Initialize
+if (typeof firebase !== "undefined" && !firebase.apps.length) {
+    firebase.initializeApp(CONFIG.firebase);
+}
