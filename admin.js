@@ -104,7 +104,6 @@ async function loadBookings() {
   if (isFirebaseReady && db) {
 
     db.collection('bookings')
-      .orderBy('createdAt', 'desc')
       .onSnapshot((snap) => {
 
         allBookings = snap.docs.map(doc => ({
