@@ -70,8 +70,8 @@ async function adminLogin() {
     }
   } else {
     // Demo mode fallback
-    const demoEmail = window.CONFIG?.admin?.email || 'admin@sstaxiservice.com';
-    if (email === demoEmail && pass === 'admin123') {
+    const demoEmail = window.CONFIG?.admin?.email || 'aiabhi02@gmail.com';
+    if (email === demoEmail && pass === 'aiabhi02') {
       document.getElementById('admin-login').classList.add('hidden');
       document.getElementById('admin-dashboard').classList.remove('hidden');
       loadDashboard(email);
