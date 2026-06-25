@@ -24,7 +24,6 @@ const CONFIG = {
 
   // ── Firebase Config ────────────────────────────────────────
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
   apiKey: "AIzaSyD9Uhr4Rl4hu4kPO2EL1SBdMhpP1Plj6QM",
   authDomain: "ss-taxy.firebaseapp.com",
   projectId: "ss-taxy",
