@@ -22,8 +22,8 @@ const CONFIG = {
     rating: "4.9",
   },
 
-  // ── Firebase Config ────────────────────────────────────────
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// ── Firebase Config ────────────────────────────────────────
+firebase: {
   apiKey: "AIzaSyD9Uhr4Rl4hu4kPO2EL1SBdMhpP1Plj6QM",
   authDomain: "ss-taxy.firebaseapp.com",
   projectId: "ss-taxy",
@@ -31,13 +31,7 @@ const CONFIG = {
   messagingSenderId: "335958609807",
   appId: "1:335958609807:web:b675f1541a6f64dce7c5fa",
   measurementId: "G-3S8RPP86W8"
-};
-
-  // ── Admin Credentials (change before deploy) ───────────────
-  admin: {
-    email: "admin@sstaxiservice.com",
-    // Password is managed via Firebase Auth
-  },
+},
 
   // ── Services ───────────────────────────────────────────────
   services: [
