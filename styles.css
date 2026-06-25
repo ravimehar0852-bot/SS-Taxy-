@@ -45,7 +45,11 @@ img{max-width:100%;display:block}
 .btn-outline-gold:hover{background:var(--gold);color:#000}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),url('https://images.unsplash.com/photo-1549924231-f129b911e442?w=1600') center/cover;padding-top:90px}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;.{
+    background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("images/hero.jpg") center/cover no-repeat;
+}
 .hero-content{position:relative;z-index:2;text-align:center;animation:fadeUp 1s ease}
 .hero-tag{color:var(--gold);letter-spacing:6px;font-weight:600;margin-bottom:14px;font-size:14px}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:20px}
