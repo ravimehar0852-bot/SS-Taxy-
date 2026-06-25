@@ -142,3 +142,7 @@ img{max-width:100%;display:block}
   .fare-box{flex-direction:column;text-align:center}
   .section{padding:60px 0}
 }
+.logo img{
+    height:60px;
+    width:auto;
+}
