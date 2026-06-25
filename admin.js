@@ -93,7 +93,6 @@ function adminLogout() {
 // ── Dashboard ──────────────────────────────────────────────
 async function loadDashboard(email) {
   document.getElementById('admin-user-email').textContent = email;
-   userEmail.textContent = email;
   await loadBookings();
   renderStats();
   renderBookingsTable(allBookings);
