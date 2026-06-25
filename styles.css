@@ -1,8 +1,12 @@
 /* ============ SS TAXY — Premium Black + Gold ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0a0a; --bg-2:#111; --gold:#d4af37; --gold-light:#f4d160;
-  --text:#f5f5f5; --muted:#aaa; --card:#1a1a1a; --radius:14px;
+  --bg:#FAF9F6;
+--bg-2:#FAF9F6;
+--card:#FFFFFF;
+--text:#222;
+--muted:#666;
+  --card:#1a1a1a; --radius:14px;
   --shadow:0 10px 40px rgba(212,175,55,.12);
 }
 html{scroll-behavior:smooth}
@@ -66,7 +70,7 @@ img{max-width:100%;display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
 /* BOOKING */
-.booking-section{padding:60px 0;background: #FAF9F6;
+.booking-section{padding:60px 0;background: #FAF9F6;}
 .booking-card{background:var(--card);border:1px solid #222;border-radius:20px;padding:32px;box-shadow:var(--shadow)}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid #222;padding-bottom:18px;margin-bottom:24px}
 .tab{flex:1;min-width:120px;padding:12px 18px;background:transparent;color:#bbb;border:1px solid #333;border-radius:50px;cursor:pointer;font-family:inherit;font-size:14px;transition:.3s}
@@ -92,24 +96,35 @@ img{max-width:100%;display:block}
 .vehicle-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:var(--shadow)}
 .vehicle-card img{height:200px;width:100%;object-fit:cover}
 .vehicle-info{padding:22px}
-.vehicle-info h3{color: #222;);margin-bottom:10px;font-family:'Playfair Display',serif}
+.vehicle-info h3{
+    color:#222;
+    margin-bottom:10px;
+    font-family:'Playfair Display',serif;
+}
 .vehicle-meta{display:flex;justify-content:space-between;color:#bbb;font-size:14px;margin-bottom:16px}
 
 /* ROUTES */
 .route-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.route-card{background: #FFFFFF;;padding:20px;border-radius:var(--radius);border-left:4px solid var(--gold);transition:.3s;cursor:pointer}
+.route-card{background: #FFFFFF;padding:20px;border-radius:var(--radius);border-left:4px solid var(--gold);transition:.3s;cursor:pointer}
 .route-card:hover{transform:translateX(6px);background:#1f1f1f}
 .route-card h4{color:#fff;margin-bottom:6px}
-.route-card p{color: #222);font-weight:600;font-size:14px}
+.route-card p{
+    color:#222;
+    font-weight:600;
+    font-size:14px;
+}
 .route-card span{color:#777;font-size:13px}
 
 /* SERVICES */
 .services-grid,.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.service-card,.why-card{background: #FFFFFF;;padding:30px 24px;border-radius:var(--radius);text-align:center;border:1px solid #222;transition:.3s}
+.service-card,.why-card{background: #FFFFFF;padding:30px 24px;border-radius:var(--radius);text-align:center;border:1px solid #222;transition:.3s}
 .service-card:hover,.why-card:hover{border-color:var(--gold);transform:translateY(-6px)}
 .service-card i,.why-card i{font-size:36px;color:var(--gold);margin-bottom:14px}
 .service-card h3,.why-card h4{margin-bottom:8px;color:#fff}
-.service-card p{color: #222);font-size:14px}
+.service-card p{
+    color:#222;
+    font-size:14px;
+}
 
 /* TESTIMONIALS */
 .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
