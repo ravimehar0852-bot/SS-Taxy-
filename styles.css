@@ -315,8 +315,13 @@ a:hover { color: var(--gold-light); }
   margin-bottom: 1.5rem;
 }
 
-.hero-title { margin-bottom: 1rem; }
-.hero-title em { font-style: normal; color: var(--gold); }
+..hero-title {
+  color: #ffffff;
+}
+
+.hero-subtitle {
+  color: rgba(255,255,255,0.9);
+}
 
 .hero-subtitle {
   font-size: 1.15rem;
