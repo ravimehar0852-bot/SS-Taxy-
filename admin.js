@@ -102,10 +102,10 @@ async function loadDashboard(email) {
 async function loadBookings() {
 
   if (isFirebaseReady && db) {
-
+console.log("Firebase Connected");
     db.collection('bookings')
       .onSnapshot((snap) => {
-
+console.log("Documents:", snap.size);
         allBookings = snap.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
