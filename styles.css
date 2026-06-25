@@ -236,7 +236,7 @@ a:hover { color: var(--gold-light); }
 .nav-toggle span {
   display: block;
   width: 24px; height: 2px;
-  background: #111111;
+  background: #ffffff !important;
   border-radius: 2px;
   transition: all var(--transition);
 }
@@ -687,6 +687,10 @@ a:hover { color: var(--gold-light); }
 }
 
 .route-price { font-size: 1.25rem; font-weight: 700; color: var(--gold); }
+.logo-text,
+.logo-text a {
+  color: #ffffff !important;
+}
 
 /* ── Testimonials ───────────────────────────────────────── */
 .testimonials-grid {
