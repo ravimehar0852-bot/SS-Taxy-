@@ -67,6 +67,7 @@ function renderNav() {
       <ul class="nav-links">${linksHtml}</ul>
       <div class="nav-cta">
         <a href="tel:${c.phone}" class="nav-phone">${c.phone}</a>
+        <a href="pages/admin.html" class="btn btn-outline">Login</a>
         <a href="#" class="btn btn-gold" onclick="document.getElementById('booking-section')?.scrollIntoView({behavior:'smooth'});return false;">Book Now</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" aria-label="Menu">
