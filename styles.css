@@ -318,12 +318,15 @@ a:hover { color: var(--gold-light); }
   margin-bottom: 1.5rem;
 }
 
-.hero-title { margin-bottom: 1rem; }
-.hero-title em { font-style: normal; color: var(--gold); }
+.hero-title { margin-bottom: 1rem;color: #ffffff !important;
+}
+.hero-title em { font-style: normal; color: #C9A84C !important;
+               }
+
 
 .hero-subtitle {
   font-size: 1.15rem;
-  color: var(--white-muted);
+  color: #f5f5f5 !important;
   margin-bottom: 2rem;
   max-width: 480px;
 }
@@ -342,7 +345,7 @@ a:hover { color: var(--gold-light); }
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--gold);
+  color: #C9A84C !important;
   line-height: 1;
 }
 .stat-label { font-size: 0.8rem; color: var(--white-muted); margin-top: 0.25rem; }
