@@ -1,3 +1,6 @@
+// Firebase Init
+firebase.initializeApp(CONFIG.firebase);
+const db = firebase.firestore();
 /* ============================================================
    SS TAXI — MAIN APPLICATION SCRIPT
    Handles: Navigation, Page rendering, Booking, WhatsApp
