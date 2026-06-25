@@ -33,7 +33,7 @@ img{max-width:100%;display:block}
     text-decoration:none;
 }
 .logo span{
-    color:#FFD54F;
+    color:#111 !important;
     font-size:20px;
     font-weight:700;
     white-space:nowrap;
@@ -218,4 +218,45 @@ body,
 .nav-links a,
 .logo{
   color:#222 !important;
+}
+/* Dark Text + Black Logo */
+
+body{
+  color:#111 !important;
+}
+
+.section-title,
+.vehicle-info h3,
+.route-card h4,
+.service-card h3,
+.why-card h4,
+.contact-card h4,
+.review-card h5,
+.faq-q{
+  color:#111 !important;
+}
+
+.section-sub,
+.vehicle-meta,
+.route-card p,
+.route-card span,
+.service-card p,
+.contact-card p,
+.review-card p{
+  color:#444 !important;
+}
+
+/* SS TAXY Logo */
+.logo,
+.logo span{
+  color:#111 !important;
+}
+
+/* Menu */
+.nav-links a{
+  color:#111 !important;
+}
+
+.nav-links a:hover{
+  color:#000 !important;
 }
