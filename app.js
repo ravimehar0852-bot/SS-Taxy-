@@ -1007,18 +1007,17 @@ function getBookingData(type) {
   };
 }
 
-function submitQuickBooking(type) {
+async function submitQuickBooking(type) {
   const d = getBookingData(type);
   if (!d.pickup || !d.drop) return showToast('Please fill in pickup and drop locations', 'error');
   if (!d.phone)             return showToast('Please enter your mobile number', 'error');
   if (!d.date)              return showToast('Please select a travel date', 'error');
 
   const booking = { ...d, name: 'Customer', id: Date.now() };
-  saveBookingLocally(booking);
-  sendWhatsApp(booking);
+  await saveBookingLocally(booking);
+sendWhatsApp(booking);
 }
-
-function submitAdvancedBooking() {
+async function submitAdvancedBooking() {
   const booking = {
     id:      Date.now(),
     type:    document.getElementById('adv-journey')?.value,
@@ -1034,16 +1033,34 @@ function submitAdvancedBooking() {
     status:  'pending',
     createdAt: new Date().toISOString(),
   };
-  saveBookingLocally(booking);
-  sendWhatsApp(booking);
+  await saveBookingLocally(booking);
+sendWhatsApp(booking);
 }
 
-function saveBookingLocally(booking) {
+async function saveBookingLocally(booking) {
+
+  booking.status = "pending";
+  booking.createdAt = new Date().toISOString();
+
   try {
+
+    // Firestore Save
+    if (window.firebase && firebase.firestore) {
+      await firebase.firestore()
+        .collection("bookings")
+        .add(booking);
+
+      console.log("Booking saved to Firestore");
+    }
+
+    // Local backup
     const all = JSON.parse(localStorage.getItem('ss_bookings') || '[]');
-    all.unshift({ ...booking, status: booking.status || 'pending', createdAt: booking.createdAt || new Date().toISOString() });
+    all.unshift(booking);
     localStorage.setItem('ss_bookings', JSON.stringify(all));
-  } catch(e) {}
+
+  } catch (e) {
+    console.error("Firestore Error:", e);
+  }
 }
 
 function sendWhatsApp(b) {
