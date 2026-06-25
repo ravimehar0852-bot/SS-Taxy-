@@ -164,3 +164,58 @@ img{max-width:100%;display:block}
     height:60px;
     width:auto;
 }
+/* White Cream Theme Override */
+
+:root{
+  --bg:#FAF9F6 !important;
+  --bg-2:#F7F3EA !important;
+  --card:#FFFFFF !important;
+  --text:#222222 !important;
+  --muted:#666666 !important;
+}
+
+body,
+.section.dark,
+.booking-section{
+  background:#FAF9F6 !important;
+  color:#222 !important;
+}
+
+.booking-card,
+.vehicle-card,
+.route-card,
+.service-card,
+.why-card,
+.review-card,
+.faq-item,
+.contact-card,
+.modal-card{
+  background:#FFFFFF !important;
+  color:#222 !important;
+  border-color:#E5E5E5 !important;
+}
+
+.route-card h4,
+.service-card h3,
+.why-card h4,
+.contact-card h4,
+.faq-q{
+  color:#222 !important;
+}
+
+.field input,
+.field select,
+.fare-box{
+  background:#FFFFFF !important;
+  color:#222 !important;
+  border-color:#DDD !important;
+}
+
+.header{
+  background:rgba(255,253,248,.95) !important;
+}
+
+.nav-links a,
+.logo{
+  color:#222 !important;
+}
