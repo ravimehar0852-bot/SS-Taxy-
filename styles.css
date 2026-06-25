@@ -6,7 +6,13 @@
   --shadow:0 10px 40px rgba(212,175,55,.12);
 }
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#FAF9F6;
+  color:#222;
+  line-height:1.6;
+  overflow-x:hidden;
+}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 .gold{color:var(--gold)}
 img{max-width:100%;display:block}
