@@ -278,13 +278,10 @@ a:hover { color: var(--gold-light); }
   padding-top: 80px;
 }
 
-.hero-bg {
+.hero-overlay {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&q=80') center/cover no-repeat;
-  filter: brightness(0.25);
-  transform: scale(1.05);
-  transition: transform 8s ease;
+  background: rgba(255,255,255,0.75);
 }
 
 #hero:hover .hero-bg { transform: scale(1.0); }
