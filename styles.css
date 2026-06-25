@@ -314,7 +314,11 @@ a:hover { color: var(--gold-light); }
   margin-bottom: 1.5rem;
 }
 
-.hero-title { margin-bottom: 1rem; }
+.hero-title {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
 .hero-title em { font-style: normal; color: var(--gold); }
 
 .hero-subtitle {
@@ -330,8 +334,9 @@ a:hover { color: var(--gold-light); }
   display: flex;
   gap: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--black-border);
-}
+  .hero-stats {
+  border-top: 1px solid #dddddd;
+  }
 
 .stat-item { }
 .stat-num {
@@ -348,7 +353,7 @@ a:hover { color: var(--gold-light); }
   bottom: 2rem; left: 50%;
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-  color: var(--white-muted);
+  color: #555555;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
