@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SS TAXY — Admin Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
+    <h1>SS <span>TAXY</span></h1>
+    <p>Admin Login</p>
+    <input type="email" id="adminEmail" placeholder="Email" />
+    <input type="password" id="adminPass" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="loginErr" class="err"></p>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="adminApp" class="hidden">
+  <aside class="sidebar">
+    <h2>SS <span>TAXY</span></h2>
+    <nav>
+      <a class="nav-item active" data-view="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a class="nav-item" data-view="bookings"><i class="fas fa-list"></i> Bookings</a>
+      <a class="nav-item" data-view="payments"><i class="fas fa-credit-card"></i> Payments</a>
+      <a class="nav-item" data-view="customers"><i class="fas fa-users"></i> Customers</a>
+      <a class="nav-item" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="view active">
+      <h1>Dashboard</h1>
+      <div class="stats">
+        <div class="stat-card"><h4>Total Bookings</h4><h2 id="statTotal">0</h2></div>
+        <div class="stat-card"><h4>Today's Bookings</h4><h2 id="statToday">0</h2></div>
+        <div class="stat-card"><h4>Total Revenue</h4><h2 id="statRevenue">₹0</h2></div>
+        <div class="stat-card"><h4>Pending</h4><h2 id="statPending">0</h2></div>
+        <div class="stat-card"><h4>Confirmed</h4><h2 id="statConfirmed">0</h2></div>
+      </div>
+    </section>
+
+    <!-- BOOKINGS -->
+    <section id="bookings" class="view">
+      <div class="view-header">
+        <h1>All Bookings</h1>
+        <div>
+          <input id="searchBox" placeholder="Search by name/phone/ID" />
+          <button onclick="exportCSV()"><i class="fas fa-file-csv"></i> CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table id="bookingTable"><thead><tr>
+        <th>ID</th><th>Name</th><th>Phone</th><th>Pickup</th><th>Drop</th>
+        <th>Date</th><th>Vehicle</th><th>Amount</th><th>Payment</th><th>Status</th><th>Actions</th>
+      </tr></thead><tbody id="bookingBody"></tbody></table></div>
+    </section>
+
+    <!-- PAYMENTS -->
+    <section id="payments" class="view">
+      <h1>Payments</h1>
+      <div class="table-wrap"><table><thead><tr>
+        <th>Booking ID</th><th>Name</th><th>Amount</th><th>Paid</th><th>Status</th>
+      </tr></thead><tbody id="paymentBody"></tbody></table></div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section id="customers" class="view">
+      <h1>Customers</h1>
+      <div class="table-wrap"><table><thead><tr>
+        <th>Name</th><th>Phone</th><th>Email</th><th>Total Bookings</th><th>Total Spent</th>
+      </tr></thead><tbody id="customerBody"></tbody></table></div>
+    </section>
+  </main>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+  </html>
