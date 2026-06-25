@@ -58,3 +58,17 @@
 
 </body>
 </html>
+<script src="../config.js"></script>
+<script src="../admin.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  allBookings = getSampleBookings();
+
+  renderStats();
+
+  renderBookingsTable(allBookings);
+
+});
+</script>
