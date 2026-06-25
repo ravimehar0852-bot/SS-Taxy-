@@ -5,55 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SS Taxi Dashboard</title>
 
-<style>
-body{
-  margin:0;
-  background:#111;
-  color:white;
-  font-family:Arial,sans-serif;
-  text-align:center;
-}
-
-.header{
-  background:#d4af37;
-  color:black;
-  padding:20px;
-  font-size:24px;
-  font-weight:bold;
-}
-
-.box{
-  margin:30px auto;
-  width:90%;
-  max-width:500px;
-  background:#1c1c1c;
-  padding:20px;
-  border-radius:12px;
-}
-
-a{
-  display:inline-block;
-  margin-top:20px;
-  color:#d4af37;
-  text-decoration:none;
-}
-</style>
-
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../admin.css">
 </head>
+
 <body>
 
-<div class="header">
-SS Taxi Dashboard
+<div id="admin-dashboard">
+
+  <div class="container">
+
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <div class="stat-card-num" id="stat-total">0</div>
+        <div class="stat-card-label">Total Bookings</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-num" id="stat-confirmed">0</div>
+        <div class="stat-card-label">Confirmed</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card-num" id="stat-pending">0</div>
+        <div class="stat-card-label">Pending</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Route</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="bookings-tbody">
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="box">
-<h2>Login Successful ✅</h2>
-<p>Admin Panel Working Properly</p>
-
-<p>Total Bookings: 0</p>
-
-<a href="../index.html">← Back to Website</a>
-</div>
+<script src="../config.js"></script>
+<script src="../admin.js"></script>
 
 </body>
 </html>
