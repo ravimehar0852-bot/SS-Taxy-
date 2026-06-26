@@ -189,60 +189,30 @@ function closeModal(){ document.getElementById('successModal').classList.add('hi
 
 // Set min date = today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
-function payNow(type){
-  document.getElementById('paymentModal').classList.add('hidden');
-
-  // CASH OPTION
-  if(type === "cash"){
-    window.tempBooking.paymentStatus = "Cash on Ride";
-    window.tempBooking.bookingStatus = "Confirmed";
-saveBooking(window.tempBooking);
-    return;
-  }
-
-  // PREPAID OPTION (RAZORPAY)
-  const options = {
-    key: RAZORPAY_KEY_ID,
-    amount: window.tempBooking.amount * 100,
-    currency: "INR",
-    name: "SS TAXY",
-    description: "Cab Booking Payment",
-
-    handler: function(response){
-
-      window.tempBooking.paymentStatus = "Paid";
-      window.tempBooking.paymentId = response.razorpay_payment_id;
-      window.tempBooking.bookingStatus = "Confirmed";
-
-      saveBooking(window.tempBooking);
-    },
-
-    prefill: {
-      name: window.tempBooking.name,
-      email: window.tempBooking.email,
-      contact: window.tempBooking.phone
-    }
-  };
-
-  const rzp = new Razorpay(options);
-  rzp.open();
-}
 async function saveBooking(data){
   try{
 
     const docRef = await db.collection("bookings").add(data);
 
+    const msg = `🚖 SS TAXY Booking
+
+Name: ${data.name}
+Phone: ${data.phone}
+Pickup: ${data.pickup}
+Drop: ${data.drop}
+Payment: ${data.paymentStatus}`;
+
+    window.open(
+      `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(msg)}`,
+      "_blank"
+    );
+
     showSuccess(docRef.id, data);
+
+    alert("Booking Successful!");
 
   }catch(err){
     console.error(err);
-    alert("Booking Failed");
+    alert("Booking Failed: " + err.message);
   }
-}
-
-  const msg = `🚖 SS TAXY Booking\n\nName: ${data.name}\nPhone: ${data.phone}\nPickup: ${data.pickup}\nDrop: ${data.drop}\nPayment: ${data.paymentStatus}`;
-
-  window.open(`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(msg)}`);
-
-  alert("Booking Successful!");
-}
+           }
