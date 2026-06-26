@@ -136,7 +136,6 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
   document.getElementById('paymentModal').classList.remove('hidden');
 });
 
-  function payNow(type){
 
   document.getElementById('paymentModal').classList.add('hidden');
 
