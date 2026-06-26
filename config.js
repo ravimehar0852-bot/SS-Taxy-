@@ -4,16 +4,14 @@
 
 // 🔥 Firebase Config — replace with your own
 const firebaseConfig = {
-  apiKey: "AIzaSyD9Uhr4Rl4hu4kPO2EL1SBdMhpP1Plj6QM",
-  authDomain: "ss-taxy.firebaseapp.com",
-  databaseURL: "https://ss-taxy-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "ss-taxy",
-  storageBucket: "ss-taxy.firebasestorage.app",
-  messagingSenderId: "335958609807",
-  appId: "1:335958609807:web:b675f1541a6f64dce7c5fa",
-  measurementId: "G-3S8RPP86W8"
+  apiKey: "AIzaSyAl7-tAOewVjkzD3F2F9VgkpNhWE1yRutI",
+  authDomain: "ss-taxy-89c26.firebaseapp.com",
+  projectId: "ss-taxy-89c26",
+  storageBucket: "ss-taxy-89c26.firebasestorage.app",
+  messagingSenderId: "183826358274",
+  appId: "1:183826358274:web:da9c476b9f3d88bdaa871b",
+  measurementId: "G-BEP931XFGJ"
 };
-
 // 💳 Razorpay Key (use rzp_live_xxx in production)
 const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY_ID";
 
