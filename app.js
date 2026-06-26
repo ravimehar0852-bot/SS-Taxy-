@@ -4,15 +4,6 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-// Loader hide
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const l = document.getElementById('loader');
-    l.style.opacity = 0;
-    setTimeout(() => l.style.display = 'none', 500);
-  }, 600);
-});
-
 // Mobile menu
 function toggleMenu(){ document.getElementById('navLinks').classList.toggle('open'); }
 document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
