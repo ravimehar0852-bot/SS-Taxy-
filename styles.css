@@ -390,3 +390,38 @@ h1, h2, h3, p {
     justify-content: center;
     margin-top: 12px;
   }
+/* ===== Booking Success Modal ===== */
+
+#successModal .modal-card{
+    width: 430px;
+    max-width: 95%;
+    background: #fff;
+    padding: 35px;
+    border-radius: 20px;
+}
+
+#successModal h2{
+    color:#111 !important;
+    font-size:28px;
+    font-weight:700;
+}
+
+#successModal p{
+    color:#222 !important;
+    font-size:17px;
+    font-weight:600;
+    line-height:1.6;
+}
+
+#successModal #bookingIdOut{
+    color:#000 !important;
+    font-weight:700;
+    font-size:18px;
+}
+
+#successModal .btn-gold{
+    margin-top:20px;
+    width:150px;
+    height:48px;
+    font-size:16px;
+}
