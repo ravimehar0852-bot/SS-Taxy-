@@ -425,3 +425,20 @@ h1, h2, h3, p {
     height:48px;
     font-size:16px;
 }
+/* ===== Hero Call Now Button Fix ===== */
+
+.hero .btn-outline-gold{
+    background: #d4af37 !important;
+    color: #000 !important;
+    border: 2px solid #d4af37 !important;
+}
+
+.hero .btn-outline-gold i,
+.hero .btn-outline-gold span{
+    color: #000 !important;
+}
+
+.hero .btn-outline-gold:hover{
+    background: #caa52f !important;
+    color: #000 !important;
+}
