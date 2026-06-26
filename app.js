@@ -135,7 +135,15 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 
   document.getElementById('paymentModal').classList.remove('hidden');
 })
+function payNow(type){
 
+  document.getElementById('paymentModal').classList.add('hidden');
+
+  if(type === "cash"){
+    window.tempBooking.paymentStatus = "Cash on Ride";
+    window.tempBooking.bookingStatus = "Confirmed";
+    return saveBooking(window.tempBooking);
+  }
   const options = {
     key: RAZORPAY_KEY_ID,
     amount: window.tempBooking.amount * 100,
