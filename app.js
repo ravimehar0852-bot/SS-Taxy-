@@ -133,15 +133,15 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
     amount: fare,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
 };
-
-document.getElementById('paymentModal').classList.remove('hidden');
-});
 const vehicleKey = document.getElementById("vehicle").value;
 const vehicle = VEHICLES[vehicleKey];
 
 if (vehicle) {
     document.getElementById("fareVehicleImage").src = vehicle.image;
 }
+document.getElementById('paymentModal').classList.remove('hidden');
+});
+
 function payNow(type){
 
   document.getElementById("paymentModal").classList.add("hidden");
