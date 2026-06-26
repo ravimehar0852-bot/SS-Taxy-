@@ -238,7 +238,22 @@
     <button class="btn-gold" onclick="closeModal()">Done</button>
   </div>
 </div>
+<div id="paymentModal" class="modal hidden">
+  <div class="modal-card">
+    <h2>Select Payment Method</h2>
 
+    <button onclick="payNow('prepaid')" class="btn-gold">
+      💳 Prepaid (Online - Razorpay)
+    </button>
+
+    <button onclick="payNow('cash')" class="btn-outline-gold">
+      💵 Cash on Ride
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
 <!-- Scripts -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
