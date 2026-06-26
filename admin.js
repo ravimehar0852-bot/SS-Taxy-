@@ -126,9 +126,29 @@ function renderCustomers(){
 }
 
 function updateBooking(id, status){
-  db.collection('bookings').doc(id).update({bookingStatus: status});
-}
+  db.collection('bookings').doc(id).update({
+    bookingStatus: status
+  }).then(() => {
 
+    // WHATSAPP AUTO SEND ON CONFIRM
+    if(status === "Confirmed"){
+      db.collection('bookings').doc(id).get().then(doc => {
+        const d = doc.data();
+
+        const msg =
+`🚖 SS TAXY Booking Confirmed
+Name: ${d.name}
+Pickup: ${d.pickup}
+Drop: ${d.drop}
+Date: ${d.date}
+Vehicle: ${d.vehicle}`;
+
+        window.open(`https://wa.me/${d.phone}?text=${encodeURIComponent(msg)}`);
+      });
+    }
+
+  });
+}
 document.getElementById('searchBox').addEventListener('input', e => renderBookings(e.target.value));
 
 // CSV Export
