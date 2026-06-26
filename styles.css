@@ -284,3 +284,29 @@ body{
 h1, h2, h3, p {
   color: inherit;
 }
+/* ===== HERO TEXT ONLY GOLD FIX (SAFE) ===== */
+
+.hero h1,
+.hero h1 span,
+.hero p.hero-sub,
+.hero p.hero-tag {
+  color: #d4af37 !important;
+}
+
+/* buttons ko exclude karo (VERY IMPORTANT) */
+.hero .btn-gold,
+.hero .btn-outline-gold,
+.hero .hero-btns a {
+  color: initial !important;
+}
+
+/* icons in buttons ko bhi safe rakho */
+.hero .btn-gold i,
+.hero .btn-outline-gold i {
+  color: inherit !important;
+}
+
+/* optional glow only on heading */
+.hero h1 {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
+}
