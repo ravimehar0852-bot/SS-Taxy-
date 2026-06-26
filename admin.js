@@ -1,3 +1,4 @@
+console.log("ADMIN JS LOADED");
 // ============ SS TAXY — ADMIN ============
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
