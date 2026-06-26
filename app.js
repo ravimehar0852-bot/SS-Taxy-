@@ -133,8 +133,8 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
   };
 
-  document.getElementById('paymentModal').classList.remove('hidden');
-})
+document.getElementById('paymentModal').classList.remove('hidden');
+});
 function payNow(type){
 
   document.getElementById('paymentModal').classList.add('hidden');
