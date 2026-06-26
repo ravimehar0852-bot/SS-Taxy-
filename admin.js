@@ -92,6 +92,7 @@ function renderBookings(filter=''){
           <button class="action-btn btn-confirm" onclick="updateBooking('${b.id}','Confirmed')">✓</button>
           <button class="action-btn btn-complete" onclick="updateBooking('${b.id}','Completed')">✔✔</button>
           <button class="action-btn btn-cancel" onclick="updateBooking('${b.id}','Cancelled')">✕</button>
+       <button onclick="deleteBooking('${b.id}')">🗑</button>
         </td>
       </tr>`;
     });
