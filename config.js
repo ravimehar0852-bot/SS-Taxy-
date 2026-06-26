@@ -4,6 +4,7 @@ const ADMIN_EMAILS = ["ravimehar0852@gmail.com"];
 // ============================================
 
 // 🔥 Firebase Config — replace with your own
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAl7-tAOewVjkzD3F2F9VgkpNhWE1yRutI",
   authDomain: "ss-taxy-89c26.firebaseapp.com",
