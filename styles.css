@@ -338,3 +338,19 @@ h1, h2, h3, p {
   transform: translateY(-2px);
   opacity: 0.9;
 }
+/* ===== FIX CALL NOW TEXT COLOR ===== */
+
+.hero .btn-outline-gold {
+  color: #fff !important;
+}
+
+.hero .btn-outline-gold span,
+.hero .btn-outline-gold a,
+.hero .btn-outline-gold {
+  color: #fff !important;
+}
+
+/* ensure icon + text same alignment */
+.hero .btn-outline-gold i {
+  color: #d4af37 !important;
+}
