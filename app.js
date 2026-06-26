@@ -136,6 +136,12 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 
 document.getElementById('paymentModal').classList.remove('hidden');
 });
+const vehicleKey = document.getElementById("vehicle").value;
+
+if (VEHICLES[vehicleKey]) {
+    document.getElementById("fareVehicleImage").src =
+        VEHICLES[vehicleKey].image;
+}
 function payNow(type){
 
   document.getElementById("paymentModal").classList.add("hidden");
