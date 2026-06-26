@@ -211,3 +211,18 @@ function notify(msg){
   if(Notification.permission === 'granted') new Notification('SS TAXY', {body:msg});
   else if(Notification.permission !== 'denied') Notification.requestPermission();
     }
+function deleteBooking(id){
+
+  const confirmDelete = confirm("⚠ Are you sure you want to delete this booking?");
+
+  if(!confirmDelete) return;
+
+  db.collection('bookings').doc(id).delete()
+    .then(() => {
+      alert("✅ Booking deleted successfully!");
+    })
+    .catch(err => {
+      alert("❌ Error deleting booking: " + err.message);
+    });
+
+}
