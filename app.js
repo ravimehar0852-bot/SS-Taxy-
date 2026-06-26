@@ -127,7 +127,7 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
     drop: drop.value,
     date: date.value,
     time: time.value,
-    vehicle: VEHICLES[vehicle.value].name,
+    vehicle: document.getElementById("vehicle").value,
     amount: fare,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
   };
