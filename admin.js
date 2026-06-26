@@ -234,24 +234,15 @@ function vehicleStats(){
     stats[b.vehicle] = (stats[b.vehicle] || 0) + 1;
   });
 
-  console.log("Vehicle Stats:", stats);
-}
-function vehicleStats(){
-  const stats = {};
-
-  allBookings.forEach(b => {
-    stats[b.vehicle] = (stats[b.vehicle] || 0) + 1;
-  });
-
   const box = document.getElementById("vehicleStatsBox");
 
   box.innerHTML = Object.entries(stats)
+    .sort((a,b) => b[1] - a[1]) // highest first
     .map(([vehicle, count]) => `
-      <div class="stat-item">
-        <b>${vehicle}</b> : ${count}
+      <div class="vehicle-card">
+        <h3>${vehicle}</h3>
+        <p>🚗 ${count} Bookings</p>
       </div>
     `)
     .join("");
-
-  console.log("Vehicle Stats:", stats);
 }
