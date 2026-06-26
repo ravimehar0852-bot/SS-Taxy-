@@ -38,19 +38,23 @@ const VEHICLES = {
 
 // 🛣 Popular routes (extend to 100+ for SEO)
 const ROUTES = [
-  { from: "Delhi", to: "Jaipur",      km: 280, price: 3500 },
-  { from: "Delhi", to: "Agra",        km: 230, price: 3000 },
-  { from: "Delhi", to: "Chandigarh",  km: 250, price: 3200 },
-  { from: "Delhi", to: "Manali",      km: 540, price: 7500 },
-  { from: "Delhi", to: "Shimla",      km: 360, price: 5000 },
-  { from: "Delhi", to: "Haridwar",    km: 220, price: 2900 },
-  { from: "Delhi", to: "Rishikesh",   km: 240, price: 3100 },
-  { from: "Delhi", to: "Dehradun",    km: 260, price: 3400 },
-  { from: "Delhi", to: "Mathura",     km: 180, price: 2400 },
-  { from: "Delhi", to: "Vrindavan",   km: 185, price: 2500 },
-  { from: "Delhi", to: "Ajmer",       km: 390, price: 5200 },
-  { from: "Delhi", to: "Pushkar",     km: 400, price: 5300 },
-  { from: "Gurgaon", to: "Delhi Airport", km: 30, price: 800 },
-  { from: "Noida", to: "Delhi Airport",   km: 40, price: 1000 },
-  { from: "Faridabad", to: "Delhi Airport", km: 45, price: 1100 }
+  { from: "Lucknow", to: "Varanasi", km: 320, price: 4500 },
+  { from: "Prayagraj", to: "Buxar", km: 140, price: 2200 },
+  { from: "Prayagraj", to: "Roorkee", km: 720, price: 9800 },
+  { from: "Prayagraj", to: "Manglaur", km: 730, price: 9900 },
+  { from: "Prayagraj", to: "Jaspur", km: 650, price: 8900 },
+  { from: "Prayagraj", to: "Azamgarh", km: 170, price: 2800 },
+  { from: "Prayagraj", to: "Sitapur", km: 260, price: 3900 },
+  { from: "Varanasi", to: "Mau", km: 125, price: 2200 },
+  { from: "Varanasi", to: "Jaunpur", km: 65, price: 1500 },
+  { from: "Varanasi", to: "Ballia", km: 145, price: 2400 },
+  { from: "Lucknow", to: "Mau", km: 305, price: 4300 },
+  { from: "Varanasi", to: "Bareilly", km: 610, price: 8500 },
+  { from: "Varanasi", to: "Lakhimpur Kheri", km: 470, price: 6900 },
+  { from: "Noida", to: "Mohali", km: 290, price: 4500 },
+  { from: "Noida", to: "Patiala", km: 250, price: 4100 },
+  { from: "Noida", to: "Amritsar", km: 470, price: 6900 },
+  { from: "Noida", to: "Jalandhar", km: 390, price: 5900 },
+  { from: "Noida", to: "Pathankot", km: 500, price: 7600 },
+  { from: "Noida", to: "Dharamshala", km: 510, price: 7900 }
 ];
