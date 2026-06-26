@@ -83,20 +83,32 @@ function validateForm(){
 }
 
 // Submit Booking
-document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  if(!validateForm()) return;
-  const fare = calcFare();
-  if(fare <= 0){ alert('Enter valid distance'); return; }
 
-  const data = {
-    name: name.value, phone: phone.value, email: email.value,
-    pickup: pickup.value, drop: drop.value,
-    date: date.value, time: time.value,
-    vehicle: VEHICLES[vehicle.value].name, amount: fare,
-    paymentStatus: 'Pending', bookingStatus: 'Pending',
+  if(!validateForm()) return;
+
+  const fare = calcFare();
+  if(fare <= 0){
+    alert('Enter valid distance');
+    return;
+  }
+
+  window.tempBooking = {
+    name: name.value,
+    phone: phone.value,
+    email: email.value,
+    pickup: pickup.value,
+    drop: drop.value,
+    date: date.value,
+    time: time.value,
+    vehicle: VEHICLES[vehicle.value].name,
+    amount: fare,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
   };
+
+  document.getElementById('paymentModal').classList.remove('hidden');
+});
 
   // Choose payment option
   const opt = prompt("Choose Payment:\n1 = Pay Full ₹"+fare+"\n2 = Pay ₹500 Advance\n3 = Pay 25% Advance ₹"+Math.round(fare*0.25));
