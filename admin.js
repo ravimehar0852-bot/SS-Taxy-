@@ -50,6 +50,7 @@ function loadBookings(){
     renderBookings();
     renderPayments();
     renderCustomers();
+    vehicleStats();
   });
 }
 
@@ -225,4 +226,32 @@ function deleteBooking(id){
       alert("❌ Error deleting booking: " + err.message);
     });
 
+}
+function vehicleStats(){
+  const stats = {};
+
+  allBookings.forEach(b => {
+    stats[b.vehicle] = (stats[b.vehicle] || 0) + 1;
+  });
+
+  console.log("Vehicle Stats:", stats);
+}
+function vehicleStats(){
+  const stats = {};
+
+  allBookings.forEach(b => {
+    stats[b.vehicle] = (stats[b.vehicle] || 0) + 1;
+  });
+
+  const box = document.getElementById("vehicleStatsBox");
+
+  box.innerHTML = Object.entries(stats)
+    .map(([vehicle, count]) => `
+      <div class="stat-item">
+        <b>${vehicle}</b> : ${count}
+      </div>
+    `)
+    .join("");
+
+  console.log("Vehicle Stats:", stats);
 }
