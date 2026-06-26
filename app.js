@@ -134,30 +134,7 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 
 document.getElementById('paymentModal').classList.remove('hidden');
 });
-function payNow(type){
 
-  document.getElementById('paymentModal').classList.add('hidden');
-
-  if(type === "cash"){
-    window.tempBooking.paymentStatus = "Cash on Ride";
-    window.tempBooking.bookingStatus = "Confirmed";
-    return saveBooking(window.tempBooking);
-  }
-  const options = {
-    key: RAZORPAY_KEY_ID,
-    amount: window.tempBooking.amount * 100,
-    currency: "INR",
-
-    handler: function(response){
-      window.tempBooking.paymentStatus = "Paid";
-      window.tempBooking.paymentId = response.razorpay_payment_id;
-      window.tempBooking.bookingStatus = "Confirmed";
-      saveBooking(window.tempBooking);
-    }
-  };
-
-  new Razorpay(options).open();
-}
 function showSuccess(id, data){
   document.getElementById('bookingIdOut').textContent = id.toUpperCase().slice(0,10);
   document.getElementById('successModal').classList.remove('hidden');
