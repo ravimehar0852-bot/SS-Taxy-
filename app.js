@@ -91,7 +91,6 @@ function updateFareSummary(fare){
   document.getElementById('discount').textContent = "₹ " + discount;
   document.getElementById('advance').textContent = "₹ " + total;
 
-  document.getElementById('fareSummary').classList.remove("hidden");
 }
 
 ['vehicle','distance'].forEach(id => document.getElementById(id).addEventListener('input', calcFare));
