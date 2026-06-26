@@ -137,10 +137,10 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 document.getElementById('paymentModal').classList.remove('hidden');
 });
 const vehicleKey = document.getElementById("vehicle").value;
+const vehicle = VEHICLES[vehicleKey];
 
-if (VEHICLES[vehicleKey]) {
-    document.getElementById("fareVehicleImage").src =
-        VEHICLES[vehicleKey].image;
+if (vehicle) {
+    document.getElementById("fareVehicleImage").src = vehicle.image;
 }
 function payNow(type){
 
