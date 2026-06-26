@@ -134,17 +134,7 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
   };
 
   document.getElementById('paymentModal').classList.remove('hidden');
-});
-
-function payNow(type){
-  
-  document.getElementById('paymentModal').classList.add('hidden');
-
-  if(type === "cash"){
-    window.tempBooking.paymentStatus = "Cash on Ride";
-    window.tempBooking.bookingStatus = "Confirmed";
-    return saveBooking(window.tempBooking);
-  }
+})
 
   const options = {
     key: RAZORPAY_KEY_ID,
@@ -178,7 +168,15 @@ function closeModal(){ document.getElementById('successModal').classList.add('hi
 
 // Set min date = today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
-   saveBooking(window.tempBooking);
+ function payNow(type){
+
+  document.getElementById('paymentModal').classList.add('hidden');
+
+  // CASH OPTION
+  if(type === "cash"){
+    window.tempBooking.paymentStatus = "Cash on Ride";
+    window.tempBooking.bookingStatus = "Confirmed";
+saveBooking(window.tempBooking);
     return;
   }
 
