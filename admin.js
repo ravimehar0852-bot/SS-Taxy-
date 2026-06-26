@@ -19,6 +19,7 @@ function login(){
     })
     .catch(e => document.getElementById('loginErr').textContent = e.message);
 }
+console.log(firebase.auth().currentUser);
 function logout(){ auth.signOut().then(() => location.reload()); }
 
 auth.onAuthStateChanged(u => {
