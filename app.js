@@ -40,15 +40,12 @@ function selectVehicle(key){
 }
 
 // Render routes
-const rGrid = document.getElementById('routeGrid');
-ROUTES.forEach(r => {
-  rGrid.innerHTML += `
-    <div class="route-card" onclick="bookRoute('${r.from}','${r.to}',${r.km})">
-      <h4>${r.from} → ${r.to}</h4>
-      <p>₹${r.price}</p>
-      <span>${r.km} km · Sedan</span>
-    </div>`;
-});
+const rGrid.innerHTML += `
+  <div class="route-card" onclick="bookRoute('${r.from}','${r.to}',${r.km})">
+    <h4>${r.from} → ${r.to}</h4>
+    <p>Book Now</p>
+    <span>24×7 Taxi Service</span>
+  </div>`;
 
 function bookRoute(from, to, km){
   document.getElementById('pickup').value = from;
