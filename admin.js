@@ -126,28 +126,71 @@ function renderCustomers(){
 }
 
 function updateBooking(id, status){
+
   db.collection('bookings').doc(id).update({
     bookingStatus: status
   }).then(() => {
 
-    // WHATSAPP AUTO SEND ON CONFIRM
-    if(status === "Confirmed"){
-      db.collection('bookings').doc(id).get().then(doc => {
-        const d = doc.data();
+    db.collection('bookings').doc(id).get().then(doc => {
+      const d = doc.data();
 
-        const msg =
-`🚖 SS TAXY Booking Confirmed
-Name: ${d.name}
-Pickup: ${d.pickup}
-Drop: ${d.drop}
-Date: ${d.date}
-Vehicle: ${d.vehicle}`;
+      let msg = "";
 
-        window.open(`https://wa.me/${d.phone}?text=${encodeURIComponent(msg)}`);
-      });
-    }
+      // CONFIRMED
+      if(status === "Confirmed"){
+        msg =
+`🚖 *SS TAXY Booking Confirmed*
+
+👤 Name: ${d.name}
+📞 Phone: ${d.phone}
+📍 Pickup: ${d.pickup}
+📍 Drop: ${d.drop}
+📅 Date: ${d.date}
+🚗 Vehicle: ${d.vehicle}
+
+🙏 Thank you for booking with SS TAXY`;
+      }
+
+      // CANCELLED
+      else if(status === "Cancelled"){
+        msg =
+`❌ *SS TAXY Booking Cancelled*
+
+👤 Name: ${d.name}
+📍 Pickup: ${d.pickup}
+📍 Drop: ${d.drop}
+
+Sorry for inconvenience. You can book again anytime.`;
+      }
+
+      // COMPLETED
+      else if(status === "Completed"){
+        msg =
+`✅ *SS TAXY Ride Completed*
+
+👤 Name: ${d.name}
+🚗 Vehicle: ${d.vehicle}
+💰 Amount Paid: ₹${d.amount}
+
+🙏 Thank you for choosing SS TAXY`;
+      }
+
+      // WhatsApp send
+      if(msg){
+        const url = `https://wa.me/${d.phone}?text=${encodeURIComponent(msg)}`;
+        window.open(url, "_blank");
+      }
+
+      // Notification sound (optional)
+      try {
+        const audio = new Audio("https://www.soundjay.com/buttons/sounds/button-16.mp3");
+        audio.play();
+      } catch(e){}
+
+    });
 
   });
+
 }
 document.getElementById('searchBox').addEventListener('input', e => renderBookings(e.target.value));
 
