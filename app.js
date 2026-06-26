@@ -73,6 +73,26 @@ function updateFareSummary(fare){
 
   document.getElementById('fareSummary').classList.remove("hidden");
 }
+function calcFare(){
+
+  const vk = document.getElementById("vehicle").value;
+  const dist = parseFloat(document.getElementById("distance").value) || 0;
+
+  if(!vk || dist <= 0){
+    document.getElementById("fareEstimate").textContent = "₹ 0";
+    return 0;
+  }
+
+  const v = VEHICLES[vk];
+  const fare = Math.round(v.baseFare + (dist * v.perKm));
+
+  document.getElementById("fareEstimate").textContent =
+    "₹ " + fare.toLocaleString("en-IN");
+
+  updateFareSummary(fare);
+
+  return fare;
+}
 ['vehicle','distance'].forEach(id => document.getElementById(id).addEventListener('input', calcFare));
 
 // FAQ toggle
