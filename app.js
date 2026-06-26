@@ -59,20 +59,6 @@ function bookRoute(from, to, km){
 }
 
 // Fare calculation
-function updateFareSummary(fare){
-
-  let gst = Math.round(fare * 0.05);
-  let discount = 0; // later coupon add karega
-
-  let total = fare + gst - discount;
-
-  document.getElementById('totalFare').textContent = "₹ " + fare;
-  document.getElementById('gst').textContent = "₹ " + gst;
-  document.getElementById('discount').textContent = "₹ " + discount;
-  document.getElementById('advance').textContent = "₹ " + total;
-
-  document.getElementById('fareSummary').classList.remove("hidden");
-}
 function calcFare(){
 
   const vk = document.getElementById("vehicle").value;
@@ -93,6 +79,21 @@ function calcFare(){
 
   return fare;
 }
+function updateFareSummary(fare){
+
+  let gst = Math.round(fare * 0.05);
+  let discount = 0; // later coupon add karega
+
+  let total = fare + gst - discount;
+
+  document.getElementById('totalFare').textContent = "₹ " + fare;
+  document.getElementById('gst').textContent = "₹ " + gst;
+  document.getElementById('discount').textContent = "₹ " + discount;
+  document.getElementById('advance').textContent = "₹ " + total;
+
+  document.getElementById('fareSummary').classList.remove("hidden");
+}
+
 ['vehicle','distance'].forEach(id => document.getElementById(id).addEventListener('input', calcFare));
 
 // FAQ toggle
