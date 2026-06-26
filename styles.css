@@ -260,3 +260,27 @@ body{
 .nav-links a:hover{
   color:#000 !important;
 }
+/* ===== HERO FULL GOLD FIX (SS TAXY) ===== */
+
+.hero h1 {
+  color: #d4af37 !important;
+}
+
+.hero h1 span {
+  color: #d4af37 !important;
+}
+
+/* force override any black/other color */
+.hero * {
+  color: #d4af37 !important;
+}
+
+/* optional premium glow */
+.hero h1 {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* agar kahi black override ho raha ho */
+h1, h2, h3, p {
+  color: inherit;
+}
