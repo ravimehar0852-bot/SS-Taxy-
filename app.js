@@ -110,32 +110,31 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
   document.getElementById('paymentModal').classList.remove('hidden');
 });
 
-  // Choose payment option
-  const opt = prompt("Choose Payment:\n1 = Pay Full ₹"+fare+"\n2 = Pay ₹500 Advance\n3 = Pay 25% Advance ₹"+Math.round(fare*0.25));
-  let payAmount;
-  if(opt === '1') payAmount = fare;
-  else if(opt === '2') payAmount = 500;
-  else if(opt === '3') payAmount = Math.round(fare * 0.25);
-  else return;
+  function payNow(type){
 
-  // Razorpay
+  document.getElementById('paymentModal').classList.add('hidden');
+
+  if(type === "cash"){
+    window.tempBooking.paymentStatus = "Cash on Ride";
+    window.tempBooking.bookingStatus = "Confirmed";
+    return saveBooking(window.tempBooking);
+  }
+
   const options = {
-    key: RAZORPAY_KEY_ID, amount: payAmount * 100, currency: 'INR',
-    name: 'SS TAXY', description: 'Cab Booking — ' + data.vehicle,
-    handler: async function(resp){
-      data.paymentStatus = payAmount === fare ? 'Paid' : 'Partial Paid';
-      data.paidAmount = payAmount;
-      data.paymentId = resp.razorpay_payment_id;
-      const docRef = await db.collection('bookings').add(data);
-      showSuccess(docRef.id, data);
-    },
-    prefill: { name: data.name, email: data.email, contact: data.phone },
-    theme: { color: '#d4af37' }
-  };
-  const rzp = new Razorpay(options);
-  rzp.open();
-});
+    key: RAZORPAY_KEY_ID,
+    amount: window.tempBooking.amount * 100,
+    currency: "INR",
 
+    handler: function(response){
+      window.tempBooking.paymentStatus = "Paid";
+      window.tempBooking.paymentId = response.razorpay_payment_id;
+      window.tempBooking.bookingStatus = "Confirmed";
+      saveBooking(window.tempBooking);
+    }
+  };
+
+  new Razorpay(options).open();
+  }
 function showSuccess(id, data){
   document.getElementById('bookingIdOut').textContent = id.toUpperCase().slice(0,10);
   document.getElementById('successModal').classList.remove('hidden');
