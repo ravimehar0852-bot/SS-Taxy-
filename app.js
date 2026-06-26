@@ -59,14 +59,19 @@ function bookRoute(from, to, km){
 }
 
 // Fare calculation
-function calcFare(){
-  const vk = document.getElementById('vehicle').value;
-  const dist = parseFloat(document.getElementById('distance').value) || 0;
-  if(!vk || dist <= 0){ document.getElementById('fareEstimate').textContent = '₹ 0'; return 0; }
-  const v = VEHICLES[vk];
-  const fare = Math.round(v.baseFare + (dist * v.perKm));
-  document.getElementById('fareEstimate').textContent = '₹ ' + fare.toLocaleString('en-IN');
-  return fare;
+function updateFareSummary(fare){
+
+  let gst = Math.round(fare * 0.05);
+  let discount = 0; // later coupon add karega
+
+  let total = fare + gst - discount;
+
+  document.getElementById('totalFare').textContent = "₹ " + fare;
+  document.getElementById('gst').textContent = "₹ " + gst;
+  document.getElementById('discount').textContent = "₹ " + discount;
+  document.getElementById('advance').textContent = "₹ " + total;
+
+  document.getElementById('fareSummary').classList.remove("hidden");
 }
 ['vehicle','distance'].forEach(id => document.getElementById(id).addEventListener('input', calcFare));
 
