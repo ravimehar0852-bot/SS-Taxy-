@@ -28,12 +28,12 @@ const BUSINESS = {
 
 // 🚗 Vehicles & pricing
 const VEHICLES = {
-  sedan:         { name: "Sedan",            seats: 4,  perKm: 12, baseFare: 250,  image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800" },
-  suv:           { name: "SUV",              seats: 6,  perKm: 16, baseFare: 350,  image: "https://images.unsplash.com/photo-1519440689458-bba6f6e26b56?w=800" },
-  ertiga:        { name: "Ertiga",           seats: 6,  perKm: 14, baseFare: 300,  image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800" },
-  innova:        { name: "Innova",           seats: 7,  perKm: 17, baseFare: 400,  image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800" },
-  innovaCrysta:  { name: "Innova Crysta",    seats: 7,  perKm: 20, baseFare: 500,  image: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=800" },
-  tempo:         { name: "Tempo Traveller",  seats: 12, perKm: 25, baseFare: 800,  image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800" }
+  sedan:         { name: "Sedan",            seats: 4,  perKm: 12, baseFare: 250,  image: "images/sedan.jpg"
+  suv:           { name: "SUV",              seats: 6,  perKm: 16, baseFare: 350,  image:  "images/suv.jpg"
+  ertiga:        { name: "Ertiga",           seats: 6,  perKm: 14, baseFare: 300,  image: "images/ertiga.jpg"
+  innova:        { name: "Innova",           seats: 7,  perKm: 17, baseFare: 400,  image: "images/innova.jpg"
+  innovaCrysta:  { name: "Innova Crysta",    seats: 7,  perKm: 20, baseFare: 500,  image:  "images/innova crysta.jpg"
+  dzire:         { name: "dzire",             seats: 4, perKm: 12, baseFare: 800,  image: "images/dzire.jpg"
 };
 
 // 🛣 Popular routes (extend to 100+ for SEO)
