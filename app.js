@@ -134,30 +134,6 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 
 document.getElementById('paymentModal').classList.remove('hidden');
 });
-function payNow(type){
-
-  document.getElementById('paymentModal').classList.add('hidden');
-
-  if(type === "cash"){
-    window.tempBooking.paymentStatus = "Cash on Ride";
-    window.tempBooking.bookingStatus = "Confirmed";
-    return saveBooking(window.tempBooking);
-  }
-  const options = {
-    key: RAZORPAY_KEY_ID,
-    amount: window.tempBooking.amount * 100,
-    currency: "INR",
-
-    handler: function(response){
-      window.tempBooking.paymentStatus = "Paid";
-      window.tempBooking.paymentId = response.razorpay_payment_id;
-      window.tempBooking.bookingStatus = "Confirmed";
-      saveBooking(window.tempBooking);
-    }
-  };
-
-  new Razorpay(options).open();
-  }
 function showSuccess(id, data){
   document.getElementById('bookingIdOut').textContent = id.toUpperCase().slice(0,10);
   document.getElementById('successModal').classList.remove('hidden');
@@ -214,8 +190,17 @@ saveBooking(window.tempBooking);
   rzp.open();
 }
 async function saveBooking(data){
+  try{
 
-  await db.collection("bookings").add(data);
+    const docRef = await db.collection("bookings").add(data);
+
+    showSuccess(docRef.id, data);
+
+  }catch(err){
+    console.error(err);
+    alert("Booking Failed");
+  }
+}
 
   const msg = `🚖 SS TAXY Booking\n\nName: ${data.name}\nPhone: ${data.phone}\nPickup: ${data.pickup}\nDrop: ${data.drop}\nPayment: ${data.paymentStatus}`;
 
