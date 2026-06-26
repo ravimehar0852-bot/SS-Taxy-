@@ -54,5 +54,3 @@ const ROUTES = [
   { from: "Noida", to: "Delhi Airport",   km: 40, price: 1000 },
   { from: "Faridabad", to: "Delhi Airport", km: 45, price: 1100 }
 ];
-
-const ADMIN_EMAILS = ["ravimehar0852@gmail.com"];
