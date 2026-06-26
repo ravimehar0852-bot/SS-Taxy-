@@ -14,12 +14,12 @@ function login(){
       if(!ADMIN_EMAILS.includes(u.user.email)){
         document.getElementById('loginErr').textContent = 'Unauthorized';
         auth.signOut(); return;
+        console.log(firebase.auth().currentUser);
       }
       showApp();
     })
     .catch(e => document.getElementById('loginErr').textContent = e.message);
 }
-console.log(firebase.auth().currentUser);
 function logout(){ auth.signOut().then(() => location.reload()); }
 
 auth.onAuthStateChanged(u => {
