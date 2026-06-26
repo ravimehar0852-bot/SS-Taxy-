@@ -15,7 +15,7 @@ function login(){
       if(!ADMIN_EMAILS.includes(u.user.email)){
         document.getElementById('loginErr').textContent = 'Unauthorized';
         auth.signOut(); return;
-        console.log(firebase.auth().currentUser);
+        
       }
       showApp();
     })
