@@ -1,3 +1,4 @@
+const ADMIN_EMAILS = ["admin@sstaxy.com"];
 // ============================================
 // SS TAXY - CONFIG (Firebase + Razorpay + Business)
 // ============================================
