@@ -194,23 +194,11 @@ function payNow(type){
 }
 async function saveBooking(data){
 
-  const docRef = await db.collection("bookings").add(data);
+  await db.collection("bookings").add(data);
 
-  // WhatsApp message
-  const msg =
-`🚖 SS TAXY Booking Confirmed
-
-Name: ${data.name}
-Phone: ${data.phone}
-Pickup: ${data.pickup}
-Drop: ${data.drop}
-Date: ${data.date}
-Vehicle: ${data.vehicle}
-Payment: ${data.paymentStatus}
-Amount: ₹${data.amount}`;
+  const msg = `🚖 SS TAXY Booking\n\nName: ${data.name}\nPhone: ${data.phone}\nPickup: ${data.pickup}\nDrop: ${data.drop}\nPayment: ${data.paymentStatus}`;
 
   window.open(`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(msg)}`);
 
-  // success UI
   alert("Booking Successful!");
 }
