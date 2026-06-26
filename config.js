@@ -28,12 +28,53 @@ const BUSINESS = {
 
 // 🚗 Vehicles & pricing
 const VEHICLES = {
-  sedan:         { name: "Sedan",            seats: 4,  perKm: 12, baseFare: 250,  image: "images/sedan.jpg"
-  suv:           { name: "SUV",              seats: 6,  perKm: 16, baseFare: 350,  image:  "images/suv.jpg"
-  ertiga:        { name: "Ertiga",           seats: 6,  perKm: 14, baseFare: 300,  image: "images/ertiga.jpg"
-  innova:        { name: "Innova",           seats: 7,  perKm: 17, baseFare: 400,  image: "images/innova.jpg"
-  innovaCrysta:  { name: "Innova Crysta",    seats: 7,  perKm: 20, baseFare: 500,  image:  "images/innova crysta.jpg"
-  dzire:         { name: "dzire",             seats: 4, perKm: 12, baseFare: 800,  image: "images/dzire.jpg"
+  sedan: {
+    name: "Sedan",
+    seats: 4,
+    perKm: 12,
+    baseFare: 250,
+    image: "images/sedan.jpg"
+  },
+
+  suv: {
+    name: "SUV",
+    seats: 6,
+    perKm: 16,
+    baseFare: 350,
+    image: "images/suv.jpg"
+  },
+
+  ertiga: {
+    name: "Ertiga",
+    seats: 6,
+    perKm: 14,
+    baseFare: 300,
+    image: "images/ertiga.jpg"
+  },
+
+  innova: {
+    name: "Innova",
+    seats: 7,
+    perKm: 17,
+    baseFare: 400,
+    image: "images/innova.jpg"
+  },
+
+  innovaCrysta: {
+    name: "Innova Crysta",
+    seats: 7,
+    perKm: 20,
+    baseFare: 500,
+    image: "images/innova crysta.jpg"
+  },
+
+  dzire: {
+    name: "Dzire",
+    seats: 4,
+    perKm: 12,
+    baseFare: 250,
+    image: "images/dzire.jpg"
+  }
 };
 
 // 🛣 Popular routes (extend to 100+ for SEO)
