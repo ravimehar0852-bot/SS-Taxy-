@@ -191,7 +191,8 @@ function closeModal(){ document.getElementById('successModal').classList.add('hi
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 async function saveBooking(data){
   try{
-
+console.log(data);
+alert(JSON.stringify(data));
     const docRef = await db.collection("bookings").add(data);
 
     const msg = `🚖 SS TAXY Booking
