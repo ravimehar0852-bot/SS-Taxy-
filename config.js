@@ -20,9 +20,9 @@ const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY_ID";
 // 🏢 Business info
 const BUSINESS = {
   name: "SS TAXY",
-  phone: "+919876543210",
-  whatsapp: "919876543210",
-  email: "booking@sstaxy.com",
+  phone: "+917412910208",
+  whatsapp: "917412910208",
+  email: "aiabhi263@gmail.com",
   address: "Connaught Place, New Delhi, India - 110001"
 };
 
