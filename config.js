@@ -54,4 +54,4 @@ const ROUTES = [
   { from: "Faridabad", to: "Delhi Airport", km: 45, price: 1100 }
 ];
 
-const ADMIN_EMAILS = ["admin@sstaxy.com"]; // allowed admin logins
+const ADMIN_EMAILS = ["ravimehar0852@gmail.com"];
