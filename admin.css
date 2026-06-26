@@ -64,3 +64,36 @@ tr:hover{background:#1a1a1a}
   .nav-item{white-space:nowrap;margin:0}
   .main{padding:20px 16px}
 }
+.vehicle-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.vehicle-card{
+  background:#111;
+  border:1px solid #d4af37;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  color:#fff;
+  transition:0.3s;
+}
+
+.vehicle-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 5px 20px rgba(212,175,55,0.3);
+}
+
+.vehicle-card h3{
+  color:#d4af37;
+  margin:0;
+  font-size:18px;
+}
+
+.vehicle-card p{
+  margin:5px 0 0;
+  font-size:14px;
+  opacity:0.8;
+}
