@@ -134,7 +134,44 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 
 document.getElementById('paymentModal').classList.remove('hidden');
 });
+function payNow(type){
 
+  document.getElementById("paymentModal").classList.add("hidden");
+
+  // CASH ON RIDE
+  if(type === "cash"){
+    window.tempBooking.paymentStatus = "Cash on Ride";
+    window.tempBooking.bookingStatus = "Confirmed";
+    saveBooking(window.tempBooking);
+    return;
+  }
+
+  // ONLINE PAYMENT
+  const options = {
+    key: RAZORPAY_KEY_ID,
+    amount: window.tempBooking.amount * 100,
+    currency: "INR",
+    name: "SS TAXY",
+    description: "Cab Booking Payment",
+
+    handler: function(response){
+      window.tempBooking.paymentStatus = "Paid";
+      window.tempBooking.paymentId = response.razorpay_payment_id;
+      window.tempBooking.bookingStatus = "Confirmed";
+
+      saveBooking(window.tempBooking);
+    },
+
+    prefill: {
+      name: window.tempBooking.name,
+      email: window.tempBooking.email,
+      contact: window.tempBooking.phone
+    }
+  };
+
+  const rzp = new Razorpay(options);
+  rzp.open();
+}
 function showSuccess(id, data){
   document.getElementById('bookingIdOut').textContent = id.toUpperCase().slice(0,10);
   document.getElementById('successModal').classList.remove('hidden');
