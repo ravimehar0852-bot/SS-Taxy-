@@ -4,12 +4,14 @@
 
 // 🔥 Firebase Config — replace with your own
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
+  apiKey: "AIzaSyD9Uhr4Rl4hu4kPO2EL1SBdMhpP1Plj6QM",
   authDomain: "ss-taxy.firebaseapp.com",
+  databaseURL: "https://ss-taxy-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "ss-taxy",
-  storageBucket: "ss-taxy.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  storageBucket: "ss-taxy.firebasestorage.app",
+  messagingSenderId: "335958609807",
+  appId: "1:335958609807:web:b675f1541a6f64dce7c5fa",
+  measurementId: "G-3S8RPP86W8"
 };
 
 // 💳 Razorpay Key (use rzp_live_xxx in production)
