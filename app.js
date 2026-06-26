@@ -120,17 +120,17 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
   }
 
   window.tempBooking = {
-    name: name.value,
-    phone: phone.value,
-    email: email.value,
-    pickup: pickup.value,
-    drop: drop.value,
-    date: date.value,
-    time: time.value,
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    email: document.getElementById("email").value,
+    pickup: document.getElementById("pickup").value,
+    drop: document.getElementById("drop").value,
+    date: document.getElementById("date").value,
+    time: document.getElementById("time").value,
     vehicle: document.getElementById("vehicle").value,
     amount: fare,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
-  };
+};
 
 document.getElementById('paymentModal').classList.remove('hidden');
 });
