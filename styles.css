@@ -310,3 +310,31 @@ h1, h2, h3, p {
 .hero h1 {
   text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
 }
+/* ===== HERO BUTTON FIX (CALL NOW + BOOK NOW SAFE) ===== */
+
+.hero .btn-gold {
+  background: #d4af37 !important;
+  color: #000 !important;
+  border: 2px solid #d4af37 !important;
+}
+
+.hero .btn-gold i {
+  color: #000 !important;
+}
+
+.hero .btn-outline-gold {
+  background: transparent !important;
+  color: #fff !important;
+  border: 2px solid #d4af37 !important;
+}
+
+.hero .btn-outline-gold i {
+  color: #d4af37 !important;
+}
+
+/* hover fix */
+.hero .btn-gold:hover,
+.hero .btn-outline-gold:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
