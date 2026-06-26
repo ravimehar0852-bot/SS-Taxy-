@@ -193,3 +193,25 @@ function payNow(type){
   const rzp = new Razorpay(options);
   rzp.open();
 }
+async function saveBooking(data){
+
+  const docRef = await db.collection("bookings").add(data);
+
+  // WhatsApp message
+  const msg =
+`🚖 SS TAXY Booking Confirmed
+
+Name: ${data.name}
+Phone: ${data.phone}
+Pickup: ${data.pickup}
+Drop: ${data.drop}
+Date: ${data.date}
+Vehicle: ${data.vehicle}
+Payment: ${data.paymentStatus}
+Amount: ₹${data.amount}`;
+
+  window.open(`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(msg)}`);
+
+  // success UI
+  alert("Booking Successful!");
+}
