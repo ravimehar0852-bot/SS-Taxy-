@@ -478,3 +478,29 @@ h1, h2, h3, p {
 .fa-user-shield{
     color: #caa43b;
 }
+/* Privacy Policy & About Us */
+.contact-card{
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-card i{
+    color: #caa43b;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.contact-card h4{
+    color: #222;
+    margin: 10px 0 5px;
+}
+
+.contact-card p{
+    color: #666;
+    font-size: 14px;
+}
+
+.contact-card:hover{
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
