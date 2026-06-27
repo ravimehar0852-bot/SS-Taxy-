@@ -465,3 +465,16 @@ h1, h2, h3, p {
     bottom:170px;
     background:#007bff;
 }
+.privacy-link{
+    text-decoration: none;
+    color: #caa43b;
+    font-weight: 600;
+}
+
+.privacy-link:hover{
+    text-decoration: underline;
+}
+
+.fa-user-shield{
+    color: #caa43b;
+}
