@@ -462,3 +462,7 @@ h1, h2, h3, p {
     flex:1;
     padding:12px;
 }
+.support{
+    bottom:170px;
+    background:#007bff;
+}
