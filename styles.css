@@ -442,3 +442,23 @@ h1, h2, h3, p {
     background: #caa52f !important;
     color: #000 !important;
 }
+.phone-input{
+    display:flex;
+    align-items:center;
+    border:1px solid #ddd;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.phone-input span{
+    padding:12px;
+    background:#f5f5f5;
+    font-weight:bold;
+}
+
+.phone-input input{
+    border:none;
+    outline:none;
+    flex:1;
+    padding:12px;
+}
