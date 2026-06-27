@@ -113,6 +113,20 @@ function validateForm(){
 
   return true;
 }
+
+// Submit Booking
+document.getElementById("bookingForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if(!validateForm()) return;
+
+  const fare = calcFare();
+
+  if(fare <= 0){
+    alert("Enter valid distance");
+    return;
+  }
+
   window.tempBooking = {
     name: document.getElementById("name").value,
     phone: "+91" + document.getElementById("phone").value,
@@ -124,14 +138,16 @@ function validateForm(){
     vehicle: document.getElementById("vehicle").value,
     amount: fare,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
-};
-const vehicleKey = document.getElementById("vehicle").value;
-const vehicle = VEHICLES[vehicleKey];
+  };
 
-if (vehicle) {
+  const vehicleKey = document.getElementById("vehicle").value;
+  const vehicle = VEHICLES[vehicleKey];
+
+  if(vehicle){
     document.getElementById("fareVehicleImage").src = vehicle.image;
-}
-document.getElementById('paymentModal').classList.remove('hidden');
+  }
+
+  document.getElementById("paymentModal").classList.remove("hidden");
 });
 
 function payNow(type){
