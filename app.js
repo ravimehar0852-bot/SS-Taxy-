@@ -104,23 +104,15 @@ document.querySelectorAll('.faq-item').forEach(item => {
 
 // Validate
 function validateForm(){
-  const phone: "+91" + document.getElementById("phone").value,
-  if(!/^[0-9]{10}$/.test(phone)){ alert('Enter valid 10-digit mobile'); return false; }
-  return true;
-}
+  const phone = document.getElementById("phone").value;
 
-// Submit Booking
-document.getElementById('bookingForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  if(!validateForm()) return;
-
-  const fare = calcFare();
-  if(fare <= 0){
-    alert('Enter valid distance');
-    return;
+  if(!/^[0-9]{10}$/.test(phone)){
+    alert("Enter valid 10-digit mobile");
+    return false;
   }
 
+  return true;
+}
   window.tempBooking = {
     name: document.getElementById("name").value,
     phone: document.getElementById("phone").value,
