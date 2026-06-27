@@ -115,7 +115,7 @@ function validateForm(){
 }
   window.tempBooking = {
     name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
+    phone: "+91" + document.getElementById("phone").value,
     email: document.getElementById("email").value,
     pickup: document.getElementById("pickup").value,
     drop: document.getElementById("drop").value,
