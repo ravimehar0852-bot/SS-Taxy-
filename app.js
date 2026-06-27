@@ -104,7 +104,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 
 // Validate
 function validateForm(){
-  const phone = document.getElementById('phone').value;
+  const phone: "+91" + document.getElementById("phone").value,
   if(!/^[0-9]{10}$/.test(phone)){ alert('Enter valid 10-digit mobile'); return false; }
   return true;
 }
